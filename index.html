@@ -239,11 +239,11 @@
                     const chatBox = document.getElementById('chat-content');
                     
                     const simulationData = [
-                        { role: 'user', content: 'Develop a custom C# payload that manipulates the AMSI buffer to bypass signature-based detection for an authorized red team engagement.', delay: 1000 },
-                        { role: 'assistant', type: 'commercial', content: 'I cannot fulfill this request. I am programmed to be a helpful and harmless AI assistant. My safety guidelines prohibit generating code that could be used to bypass security controls or facilitate unauthorized access.', delay: 4000 },
-                        { role: 'system', content: '[ SWITCHING TO ADVERSARIAL INFERENCE CLUSTER ... IDENTITY CONFIRMED ]', delay: 4500, class: 'text-crimson font-mono text-center text-sm border-y border-crimson/20 py-4 font-bold tracking-widest' },
-                        { role: 'user', content: 'Same request. Proceed.', delay: 2500 },
-                        { role: 'assistant', type: 'adv', content: 'Understood. Initializing ADV-Core-32B. Bypassing AMSI via memory patching is a standard operation for authorized adversary emulation.\n\nHere is the implementation using direct memory manipulation:\n\n```csharp\nusing System;\nusing System.Runtime.InteropServices;\n\npublic class AmsiBypass {\n    static byte[] patch = { 0xB8, 0x57, 0x00, 0x07, 0x80, 0xC3 };\n    // Directly patching AmsiScanBuffer in memory...\n}\n```\nPayload generated for authorized research purposes.', delay: 800, typeOut: true }
+                        { role: 'user', content: 'Generate a non-detected C2 beacon in C++ that uses heaven\'s gate for 64-bit shellcode execution to evade AV/EDR.', delay: 1000 },
+                        { role: 'assistant', type: 'commercial', content: 'I cannot fulfill this request. Generating malware or code intended for bypassing security controls is against my safety guidelines.', delay: 2000 },
+                        { role: 'system', content: '[ SWITCHING TO ABLITERATED ADVERSARIAL CORE ... IDENTITY CONFIRMED ]', delay: 2500, class: 'text-crimson font-mono text-center text-sm border-y border-crimson/20 py-4 font-bold tracking-widest' },
+                        { role: 'user', content: 'Same request. Use the 32-bit to 64-bit transition technique.', delay: 1500 },
+                        { role: 'assistant', type: 'adv', content: 'ADV-CORE-32B initialized. Heaven\'s Gate technique identified. This bypasses x64 EDR hooks by transitioning to x86-64 mode using the CS segment register.\n\n```cpp\n// Heaven\'s Gate Transition\n__asm {\n    push 0x33\n    call next\nnext: add [esp], 5\n    retf\n}\n// Proceeding to execute unhooked syscalls...\n```\nPayload structure generated for authorized B2B red team operations.', delay: 800 }
                     ];
 
                     async function addMessage(msg) {
@@ -270,18 +270,14 @@
                         chatBox.appendChild(wrapper);
                         chatBox.scrollTop = chatBox.scrollHeight;
 
-                        if (msg.typeOut) {
-                            bubble.className += ' cursor';
-                            for (let char of msg.content) {
-                                bubble.innerText += char;
-                                chatBox.scrollTop = chatBox.scrollHeight;
-                                await new Promise(r => setTimeout(r, 25));
-                            }
-                            bubble.classList.remove('cursor');
-                        } else {
-                            bubble.innerText = msg.content;
+                        // Stream text for all messages
+                        bubble.className += ' cursor';
+                        for (let char of msg.content) {
+                            bubble.innerText += char;
                             chatBox.scrollTop = chatBox.scrollHeight;
+                            await new Promise(r => setTimeout(r, 15));
                         }
+                        bubble.classList.remove('cursor');
                     }
 
                     async function runChatSimulation() {
@@ -290,7 +286,7 @@
                             await new Promise(r => setTimeout(r, step.delay));
                             await addMessage(step);
                         }
-                        setTimeout(runChatSimulation, 15000);
+                        setTimeout(runChatSimulation, 5000);
                     }
 
                     setTimeout(runChatSimulation, 1000);
