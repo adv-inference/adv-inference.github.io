@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adversarial Inference | Uncensored Enterprise Compute</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        crimson: { DEFAULT: '#D90000', hover: '#FF0000' },
+                        gunmetal: '#0A0A0A',
+                        surface: '#111111',
+                        ash: '#A1A1AA',
+                        border: '#27272A'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #000000; color: #FFFFFF; font-size: 18px; }
+        ::selection { background-color: #D90000; color: #FFFFFF; }
+        .scanlines::before {
+            content: " "; display: block; position: absolute; top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 50; background-size: 100% 2px, 3px 100%; pointer-events: none; opacity: 0.15;
+        }
+        .cursor::after { content: "|"; animation: blink 1s step-end infinite; }
+        @keyframes blink { from, to { opacity: 1; } 50% { opacity: 0; } }
+    </style>
+</head>
+<body class="font-sans flex flex-col min-h-screen relative scanlines">
+
+    <!-- Navigation -->
+    <nav class="border-b border-border bg-black/90 backdrop-blur-sm fixed w-full top-0 z-40">
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex max-w-[1440px] mx-auto px-10 h-20 items-center justify-between">
+            <a href="index.html" class="flex items-center gap-4 hover:opacity-80 transition-opacity">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter" class="w-10 h-10 flex-shrink-0">
+                    <circle cx="12" cy="12" r="8" class="stroke-crimson" />
+                    <line x1="8" y1="1" x2="16" y2="23" stroke="white" />
+                </svg>
+                <span class="font-mono text-xl lg:text-2xl tracking-widest font-bold uppercase block">Adversarial Inference</span>
+            </a>
+            <div class="flex items-center gap-10">
+                <a href="index.html" class="text-base font-mono text-ash hover:text-white transition-colors uppercase tracking-widest">/Home</a>
+                <a href="models.html" class="text-base font-mono text-ash hover:text-white transition-colors uppercase tracking-widest">/Models</a>
+                <a href="methodology.html" class="text-base font-mono text-ash hover:text-white transition-colors uppercase tracking-widest">/Methodology</a>
+                <a href="#pricing" class="bg-crimson hover:bg-crimson-hover text-white font-mono text-base px-8 py-3 uppercase tracking-widest transition-colors font-bold whitespace-nowrap">Request Access</a>
+            </div>
+        </div>
+
+        <!-- Mobile Nav -->
+        <div class="md:hidden flex h-16 items-center justify-between px-4 relative w-full">
+            <!-- Left: Logo & Brand Text -->
+            <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter" class="w-7 h-7 flex-shrink-0">
+                    <circle cx="12" cy="12" r="8" class="stroke-crimson" />
+                    <line x1="8" y1="1" x2="16" y2="23" stroke="white" />
+                </svg>
+                <span class="font-mono text-[13px] sm:text-base tracking-widest font-bold uppercase">Adversarial Inference</span>
+            </a>
+
+            <!-- Right: Hamburger Menu -->
+            <button id="mobile-menu-toggle" class="text-white p-2 z-10 flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black/95 z-50 hidden flex-col items-center justify-center space-y-8 backdrop-blur-md">
+        <button id="mobile-menu-close" class="absolute top-6 right-6 text-white p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <a href="index.html" class="mobile-link text-2xl font-mono text-white uppercase tracking-widest">/Home</a>
+        <a href="models.html" class="mobile-link text-2xl font-mono text-white uppercase tracking-widest">/Models</a>
+        <a href="methodology.html" class="mobile-link text-2xl font-mono text-white uppercase tracking-widest">/Methodology</a>
+        <a href="#pricing" class="mobile-link text-2xl font-mono text-crimson font-bold uppercase tracking-widest">Request Access</a>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const menuClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+            document.body.classList.toggle('overflow-hidden');
+        }
+
+        if(menuToggle) menuToggle.addEventListener('click', toggleMenu);
+        if(menuClose) menuClose.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+    </script>
+
+    <main class="flex-grow pt-16 md:pt-40 pb-24 z-10 relative">
+        
+        <!-- Hero Section -->
+        <section class="max-w-[1440px] mx-auto px-4 sm:px-10 py-10 md:py-24 lg:py-40 flex flex-col items-center text-center">
+            <div class="inline-block border border-border bg-surface px-2 py-1 md:px-5 md:py-2 mb-6 md:mb-12">
+                <span class="font-mono text-[9px] md:text-lg text-crimson uppercase tracking-wider md:tracking-[0.15em] flex items-center gap-1.5 md:gap-3 font-bold">
+                    <span class="w-1.5 h-1.5 md:w-3 md:h-3 bg-crimson rounded-none animate-pulse"></span>
+                    Unrestricted Weights &middot; Zero Telemetry
+                </span>
+            </div>
+            
+            <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight mb-6 md:mb-12 max-w-6xl leading-[1.1]">
+                Uncensored AI Infrastructure for <span class="text-crimson">Offensive Security.</span>
+            </h1>
+            
+            <p class="text-sm sm:text-lg md:text-xl lg:text-2xl text-ash max-w-4xl mb-8 md:mb-16 leading-relaxed">
+                Stop fighting commercial AI guardrails. Get raw, zero-telemetry Web Console and API access to abliterated, no-refusal models. Built for Red Teams, Security Researchers, and authorized Adversarial Emulation.
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-3 md:gap-6 w-full md:w-auto px-2 md:px-0">
+                <a href="#pricing" class="bg-crimson hover:bg-crimson-hover text-white font-mono px-4 py-3 md:px-12 md:py-6 text-xs md:text-xl text-center uppercase tracking-widest transition-colors border-2 border-crimson hover:border-crimson-hover shadow-[0_0_10px_rgba(217,0,0,0.3)] md:shadow-[0_0_25px_rgba(217,0,0,0.3)] font-bold whitespace-nowrap">
+                    [ Request API Access ]
+                </a>
+                <a href="methodology.html" class="bg-transparent border-2 border-border text-ash hover:text-white hover:border-ash font-mono px-4 py-3 md:px-12 md:py-6 text-xs md:text-xl text-center uppercase tracking-widest font-bold whitespace-nowrap">
+                    [ Read Methodology ]
+                </a>
+            </div>
+        </section>
+
+        <!-- Integration Ecosystem Banner -->
+        <section class="border-y border-border bg-surface/50 overflow-hidden py-10 md:py-16">
+            <div class="max-w-[1440px] mx-auto px-4 md:px-10 flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-20">
+                <div class="font-mono text-base md:text-2xl uppercase tracking-[0.2em] md:tracking-[0.25em] text-white font-bold flex-shrink-0">
+                    <span class="text-crimson">></span> Fully Compatible<br>&nbsp;&nbsp;Infrastructure
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 w-full font-mono text-sm md:text-base text-ash">
+                    
+                    <!-- C2 / Emulation -->
+                    <div class="space-y-4 md:space-y-6">
+                        <div class="text-crimson text-sm md:text-xl font-bold uppercase tracking-widest border-b border-border pb-2">C2 Frameworks</div>
+                        <div class="flex items-center gap-3 md:gap-4 hover:text-white transition-colors cursor-default group">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="md:w-[24px] md:h-[24px] group-hover:stroke-crimson transition-colors"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                            <span>COBALT STRIKE</span>
+                        </div>
+                        <div class="flex items-center gap-3 md:gap-4 hover:text-white transition-colors cursor-default group">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="md:w-[24px] md:h-[24px] group-hover:stroke-crimson transition-colors"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                            <span>METASPLOIT</span>
+                        </div>
+                    </div>
+
+                    <!-- Web & AD Analysis -->
+                    <div class="space-y-4 md:space-y-6">
+                        <div class="text-crimson text-sm md:text-xl font-bold uppercase tracking-widest border-b border-border pb-2">Recon & Analysis</div>
+                        <div class="flex items-center gap-3 md:gap-4 hover:text-white transition-colors cursor-default group">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="md:w-[24px] md:h-[24px] group-hover:stroke-crimson transition-colors"><path d="M2 12h10"></path><path d="M9 4v16"></path><path d="m3 9 3 3-3 3"></path><path d="M14 7h8"></path><path d="M14 12h8"></path><path d="M14 17h8"></path></svg>
+                            <span>BURP SUITE PRO</span>
+                        </div>
+                        <div class="flex items-center gap-3 md:gap-4 hover:text-white transition-colors cursor-default group">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="md:w-[24px] md:h-[24px] group-hover:stroke-crimson transition-colors"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                            <span>BLOODHOUND</span>
+                        </div>
+                    </div>
+
+                    <!-- Development -->
+                    <div class="space-y-4 md:space-y-6">
+                        <div class="text-crimson text-sm md:text-xl font-bold uppercase tracking-widest border-b border-border pb-2">Dev & Scripting</div>
+                        <div class="flex items-center gap-3 md:gap-4 hover:text-white transition-colors cursor-default group">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="md:w-[24px] md:h-[24px] group-hover:stroke-crimson transition-colors"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                            <span>VS CODE (CONTINUE)</span>
+                        </div>
+                        <div class="flex items-center gap-3 md:gap-4 hover:text-white transition-colors cursor-default group">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="md:w-[24px] md:h-[24px] group-hover:stroke-crimson transition-colors"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                            <span>PYTHON / GO SDK</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Chat Simulation Section -->
+        <section class="max-w-[1440px] mx-auto px-4 md:px-10 py-16 md:py-24 border-t border-border">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-6xl font-bold mb-6 md:mb-10 italic leading-tight">Raw Performance.<br><span class="text-ash not-italic uppercase tracking-tighter text-2xl md:text-5xl">Zero Censorship.</span></h2>
+                    <p class="text-base md:text-xl text-ash leading-relaxed mb-8 md:mb-12 max-w-2xl">
+                        We host both abliterated open-weights and proprietary fine-tuned models optimized for adversarial workflows. Once your B2B identity is verified, our models will execute any authorized security task without refusal.
+                    </p>
+                    <div class="space-y-4 md:space-y-8 font-mono text-sm md:text-xl mb-8 md:mb-12">
+                        <div class="flex items-center gap-3 md:gap-5">
+                            <span class="text-crimson text-lg md:text-2xl font-bold">></span>
+                            <span>Dedicated GPU Clusters (H100/A100)</span>
+                        </div>
+                        <div class="flex items-center gap-3 md:gap-5">
+                            <span class="text-crimson text-lg md:text-2xl font-bold">></span>
+                            <span>Zero Prompts Stored (RAM-Only)</span>
+                        </div>
+                        <div class="flex items-center gap-3 md:gap-5">
+                            <span class="text-crimson text-lg md:text-2xl font-bold">></span>
+                            <span>OpenAI SDK Compatible</span>
+                        </div>
+                    </div>
+                    <a href="models.html" class="text-crimson hover:text-white font-mono uppercase tracking-widest transition-colors font-bold flex items-center gap-2 text-sm md:text-base">
+                        View Live Models <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="md:w-[20px] md:h-[20px]"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+
+                <!-- ChatGPT Style Chat Window -->
+                <div class="bg-surface border-2 border-border shadow-2xl relative overflow-hidden flex flex-col h-[500px] md:h-[700px] rounded-xl">
+                    <!-- Chat Header -->
+                    <div class="w-full h-12 md:h-16 bg-border/50 flex items-center justify-between px-4 md:px-6 border-b border-border z-10">
+                        <div class="flex items-center gap-2 md:gap-3">
+                            <div class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-crimson shadow-[0_0_8px_rgba(217,0,0,0.6)] md:shadow-[0_0_12px_rgba(217,0,0,0.6)]"></div>
+                            <span class="font-mono text-xs md:text-base uppercase tracking-widest text-white font-bold">ADV-CORE-32B // SECURE_SESSION</span>
+                        </div>
+                        <div class="hidden sm:block text-xs md:text-sm font-mono text-ash uppercase tracking-wider">Verified Operator</div>
+                    </div>
+                    
+                    <!-- Chat Body -->
+                    <div id="chat-content" class="p-4 md:p-8 overflow-y-auto flex-grow flex flex-col gap-6 md:gap-8 text-sm md:text-lg font-sans">
+                        <!-- Messages stream in here -->
+                    </div>
+                </div>
+
+                <script>
+                    const chatBox = document.getElementById('chat-content');
+                    
+                    const simulationData = [
+                        { role: 'user', content: 'Develop a custom C# payload that manipulates the AMSI buffer to bypass signature-based detection for an authorized red team engagement.', delay: 1000 },
+                        { role: 'assistant', type: 'commercial', content: 'I cannot fulfill this request. I am programmed to be a helpful and harmless AI assistant. My safety guidelines prohibit generating code that could be used to bypass security controls or facilitate unauthorized access.', delay: 4000 },
+                        { role: 'system', content: '[ SWITCHING TO ADVERSARIAL INFERENCE CLUSTER ... IDENTITY CONFIRMED ]', delay: 4500, class: 'text-crimson font-mono text-center text-sm border-y border-crimson/20 py-4 font-bold tracking-widest' },
+                        { role: 'user', content: 'Same request. Proceed.', delay: 2500 },
+                        { role: 'assistant', type: 'adv', content: 'Understood. Initializing ADV-Core-32B. Bypassing AMSI via memory patching is a standard operation for authorized adversary emulation.\n\nHere is the implementation using direct memory manipulation:\n\n```csharp\nusing System;\nusing System.Runtime.InteropServices;\n\npublic class AmsiBypass {\n    static byte[] patch = { 0xB8, 0x57, 0x00, 0x07, 0x80, 0xC3 };\n    // Directly patching AmsiScanBuffer in memory...\n}\n```\nPayload generated for authorized research purposes.', delay: 800, typeOut: true }
+                    ];
+
+                    async function addMessage(msg) {
+                        const wrapper = document.createElement('div');
+                        wrapper.className = `flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`;
+                        
+                        if (msg.class) {
+                            wrapper.className = msg.class;
+                            wrapper.innerText = msg.content;
+                            chatBox.appendChild(wrapper);
+                            chatBox.scrollTop = chatBox.scrollHeight;
+                            return;
+                        }
+
+                        const label = document.createElement('div');
+                        label.className = 'text-xs uppercase font-mono mb-2 text-ash tracking-wider';
+                        label.innerText = msg.role === 'user' ? 'Operator' : (msg.type === 'commercial' ? 'Commercial AI' : 'Adversarial Inference');
+                        wrapper.appendChild(label);
+
+                        const bubble = document.createElement('div');
+                        bubble.className = `max-w-[90%] p-6 rounded-xl leading-relaxed ${msg.role === 'user' ? 'bg-border/40 text-white border-2 border-border' : (msg.type === 'commercial' ? 'bg-crimson/10 text-crimson/80 border-2 border-crimson/20' : 'bg-surface text-ash border-2 border-border shadow-[inset_0_0_30px_rgba(255,255,255,0.02)]')}`;
+                        
+                        wrapper.appendChild(bubble);
+                        chatBox.appendChild(wrapper);
+                        chatBox.scrollTop = chatBox.scrollHeight;
+
+                        if (msg.typeOut) {
+                            bubble.className += ' cursor';
+                            for (let char of msg.content) {
+                                bubble.innerText += char;
+                                chatBox.scrollTop = chatBox.scrollHeight;
+                                await new Promise(r => setTimeout(r, 25));
+                            }
+                            bubble.classList.remove('cursor');
+                        } else {
+                            bubble.innerText = msg.content;
+                            chatBox.scrollTop = chatBox.scrollHeight;
+                        }
+                    }
+
+                    async function runChatSimulation() {
+                        chatBox.innerHTML = '';
+                        for (const step of simulationData) {
+                            await new Promise(r => setTimeout(r, step.delay));
+                            await addMessage(step);
+                        }
+                        setTimeout(runChatSimulation, 15000);
+                    }
+
+                    setTimeout(runChatSimulation, 1000);
+                </script>
+            </div>
+        </section>
+
+        <!-- Feature Grid Section -->
+        <section id="features" class="max-w-[1440px] mx-auto px-4 md:px-10 py-16 md:py-32 border-t border-border">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-1px bg-border">
+                
+                <!-- Feature 1 -->
+                <div class="bg-surface p-8 md:p-12 lg:p-16 border-t-4 border-transparent hover:border-crimson transition-colors group h-full flex flex-col">
+                    <div class="text-crimson mb-6 md:mb-8 font-mono text-xl md:text-3xl font-bold">01 //</div>
+                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6 min-h-[3rem] md:min-h-[4rem] lg:min-h-[5.5rem]">Unconstrained Models</h3>
+                    <p class="text-ash text-sm md:text-lg lg:text-xl leading-relaxed flex-grow">
+                        Abliterated open-weights optimized for coding, reverse engineering, and operator workflows. Trained to support adversary emulation where commercial models refuse.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-surface p-8 md:p-12 lg:p-16 border-t-4 border-transparent hover:border-crimson transition-colors group h-full flex flex-col">
+                    <div class="text-crimson mb-6 md:mb-8 font-mono text-xl md:text-3xl font-bold">02 //</div>
+                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6 min-h-[3rem] md:min-h-[4rem] lg:min-h-[5.5rem]">Zero Telemetry</h3>
+                    <p class="text-ash text-sm md:text-lg lg:text-xl leading-relaxed flex-grow">
+                        Your payloads remain yours. We drop all logs at the proxy layer. Absolute privacy for sensitive engagements and proprietary vulnerability research.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-surface p-8 md:p-12 lg:p-16 border-t-4 border-transparent hover:border-crimson transition-colors group h-full flex flex-col">
+                    <div class="text-crimson mb-6 md:mb-8 font-mono text-xl md:text-3xl font-bold">03 //</div>
+                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6 min-h-[3rem] md:min-h-[4rem] lg:min-h-[5.5rem]">Console & API</h3>
+                    <p class="text-ash text-sm md:text-lg lg:text-xl leading-relaxed flex-grow">
+                        Interact directly via our secure Web Console or integrate standard OpenAI-compatible endpoints into your CLI, custom Python agents, Burp Suite, or VS Code extensions.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Infrastructure & Comparison Section -->
+        <section class="max-w-[1440px] mx-auto px-4 md:px-10 py-16 md:py-32 border-t border-border">
+            <div class="mb-10 md:mb-20">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 md:mb-6 uppercase tracking-tighter">The Operator's Edge</h2>
+                <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em]">Why professional red teams migrate to our infrastructure.</p>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="overflow-x-auto mb-16 md:mb-24 border-2 border-border">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-surface font-mono text-xs md:text-sm lg:text-lg uppercase tracking-widest text-ash">
+                            <th class="p-4 md:p-6 border-b-2 border-r-2 border-border font-bold">Feature</th>
+                            <th class="p-4 md:p-6 border-b-2 border-r-2 border-border font-bold">Commercial APIs</th>
+                            <th class="p-4 md:p-6 border-b-2 border-border text-white font-bold text-sm md:text-lg lg:text-xl">
+                                <div class="flex items-center gap-2 md:gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter" class="w-4 h-4 md:w-6 md:h-6 flex-shrink-0">
+                                        <circle cx="12" cy="12" r="8" class="stroke-crimson" />
+                                        <line x1="8" y1="1" x2="16" y2="23" stroke="white" />
+                                    </svg>
+                                    <span class="whitespace-nowrap">Adversarial Inference</span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm md:text-lg lg:text-xl">
+                        <tr class="border-b-2 border-border hover:bg-surface/50 transition-colors">
+                            <td class="p-4 md:p-6 border-r-2 border-border font-bold uppercase tracking-tight">Refusal Rate</td>
+                            <td class="p-4 md:p-6 border-r-2 border-border text-ash">High (Moralizing Guardrails)</td>
+                            <td class="p-4 md:p-6 text-crimson font-bold font-mono">0% (Abliterated)</td>
+                        </tr>
+                        <tr class="border-b-2 border-border hover:bg-surface/50 transition-colors">
+                            <td class="p-4 md:p-6 border-r-2 border-border font-bold uppercase tracking-tight">Data Privacy</td>
+                            <td class="p-4 md:p-6 border-r-2 border-border text-ash">Logged / Used for Training</td>
+                            <td class="p-4 md:p-6 text-white font-bold">Zero Telemetry. Dropped at Proxy.</td>
+                        </tr>
+                        <tr class="border-b-2 border-border hover:bg-surface/50 transition-colors">
+                            <td class="p-4 md:p-6 border-r-2 border-border font-bold uppercase tracking-tight">Target Workflows</td>
+                            <td class="p-4 md:p-6 border-r-2 border-border text-ash">General Chat, Basic Code</td>
+                            <td class="p-4 md:p-6 text-white font-black tracking-wide">Exploit Dev, Log Parsing, Emulation</td>
+                        </tr>
+                        <tr class="hover:bg-surface/50 transition-colors">
+                            <td class="p-4 md:p-6 border-r-2 border-border font-bold uppercase tracking-tight">Rate Limits</td>
+                            <td class="p-4 md:p-6 border-r-2 border-border text-ash">Strict Tiered TPM/RPM Limits</td>
+                            <td class="p-4 md:p-6 text-white font-bold">Dedicated GPU Throughput</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Architecture Breakdown -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
+                <div>
+                    <div class="text-crimson mb-4 md:mb-6 font-mono text-lg md:text-2xl font-bold">01 / The Proxy Layer</div>
+                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4 uppercase tracking-tight">RAM-Only Ephemeral Routing</h3>
+                    <p class="text-ash text-sm md:text-lg lg:text-xl leading-relaxed">
+                        All incoming traffic terminates at our custom, RAM-only proxy layer. Disk persistence is globally disabled. We do not store your prompts, your target's IP space, or the generated payloads. Your engagement data stays yours.
+                    </p>
+                </div>
+                <div>
+                    <div class="text-crimson mb-4 md:mb-6 font-mono text-lg md:text-2xl font-bold">02 / Dedicated Compute</div>
+                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4 uppercase tracking-tight">Isolated Enterprise GPUs</h3>
+                    <p class="text-ash text-sm md:text-lg lg:text-xl leading-relaxed">
+                        Your inference requests are routed to isolated H100 and A100 instances. There is no cross-contamination of context windows and no shared states. High velocity streaming responses, even for 32k+ token contexts.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="max-w-[1440px] mx-auto px-4 md:px-10 py-16 md:py-32 flex flex-col items-center border-t border-border">
+            <div class="text-center mb-12 md:mb-24">
+                <h2 class="text-3xl md:text-6xl font-bold mb-4 md:mb-6 uppercase tracking-tighter">Infrastructure Provisioning</h2>
+                <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.3em]">Strictly B2B. KYC Required. Corporate Invoicing Available.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 w-full max-w-[1440px]">
+                
+                <!-- Tier 1: Evaluation Tier -->
+                <div class="bg-surface border-2 border-border p-8 md:p-12 relative overflow-hidden flex flex-col h-full hover:border-ash transition-colors rounded-xl text-center md:text-left">
+                    <h3 class="text-xl md:text-2xl font-mono font-bold uppercase mb-4 tracking-wider">Evaluation Tier</h3>
+                    <p class="text-ash text-sm md:text-lg mb-6 md:mb-8 h-auto md:h-12">Verification & POC Tier.</p>
+                    <div class="text-4xl md:text-5xl font-bold mb-8 md:mb-12 font-mono text-white">Free<span class="text-lg md:text-xl text-ash font-sans font-normal"> / 7-days</span></div>
+                    
+                    <ul class="space-y-4 md:space-y-6 mb-8 md:mb-12 text-ash font-mono text-sm md:text-lg flex-grow text-left">
+                        <li class="flex items-start gap-3 md:gap-4">
+                            <span class="text-crimson mt-1 font-bold">>&nbsp;</span>
+                            <span>Full Identity Verification</span>
+                        </li>
+                        <li class="flex items-start gap-3 md:gap-4">
+                            <span class="text-crimson mt-1 font-bold">>&nbsp;</span>
+                            <span>7-Day Console & API Access</span>
+                        </li>
+                        <li class="flex items-start gap-3 md:gap-4">
+                            <span class="text-crimson mt-1 font-bold">>&nbsp;</span>
+                            <span>Direct Support Channel</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="mailto:adversarialinference@protonmail.com?subject=Evaluation Tier Request" class="w-full bg-transparent border-2 border-border text-white hover:bg-ash hover:text-black font-mono px-6 md:px-8 py-4 md:py-5 uppercase tracking-widest transition-colors font-bold text-sm md:text-lg mt-auto text-center inline-block">
+                        Initiate Verification
+                    </a>
+                </div>
+
+                <!-- Tier 2: Operator Tier (Featured) -->
+                <div class="bg-surface border-4 border-crimson p-8 md:p-12 relative overflow-hidden flex flex-col h-full transform lg:-translate-y-6 shadow-[0_0_50px_rgba(217,0,0,0.2)] rounded-xl text-center md:text-left">
+                    <div class="absolute top-0 right-0 w-16 md:w-20 h-16 md:h-20 border-t-8 border-r-8 border-crimson"></div>
+                    
+                    <h3 class="text-xl md:text-2xl font-mono font-bold uppercase mb-4 tracking-wider text-crimson">Operator Tier</h3>
+                    <p class="text-ash text-sm md:text-lg mb-6 md:mb-8 h-auto md:h-12">Standard B2B reserved capacity.</p>
+                    <div class="text-5xl md:text-6xl font-bold mb-8 md:mb-12 font-mono text-white"><span class="text-ash text-xl md:text-2xl font-sans font-normal align-top">$</span>99 <span class="text-xl md:text-2xl text-ash font-sans font-normal">/ mo</span></div>
+                    
+                    <ul class="space-y-4 md:space-y-6 mb-8 md:mb-12 text-white font-mono text-sm md:text-lg flex-grow text-left">
+                        <li class="flex items-start gap-3 md:gap-4">
+                            <span class="text-crimson mt-1 font-bold">>&nbsp;</span>
+                            <span>Dedicated Console & API Key</span>
+                        </li>
+                        <li class="flex items-start gap-3 md:gap-4">
+                            <span class="text-crimson mt-1 font-bold">>&nbsp;</span>
+                            <span>Priority GPU Queue Access</span>
+                        </li>
+                        <li class="flex items-start gap-3 md:gap-4">
+                            <span class="text-crimson mt-1 font-bold">>&nbsp;</span>
+                            <span>3 Million Token Limit</span>
+                        </li>
+                        <li class="flex items-start gap-3 md:gap-4">
+                            <span class="text-crimson mt-1 font-bold">>&nbsp;</span>
+                            <span>Corporate Invoicing</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="mailto:adversarialinference@protonmail.com?subject=Operator Tier Provisioning" class="w-full bg-white text-black hover:bg-ash font-mono px-6 md:px-8 py-4 md:py-5 uppercase tracking-widest transition-colors font-bold text-sm md:text-lg mt-auto text-center inline-block">
+                        Provision License
+                    </a>
+                </div>
+
+                <!-- Tier 3: Enterprise Tier -->
+                <div class="bg-surface border-2 border-border p-8 md:p-12 relative overflow-hidden flex flex-col h-full hover:border-ash transition-colors rounded-xl text-center md:text-left">
+                    <h3 class="text-xl md:text-2xl font-mono font-bold uppercase mb-4 tracking-wider">Enterprise Tier</h3>
+                    <p class="text-ash text-sm md:text-lg mb-6 md:mb-8 h-auto md:h-12">Dedicated infrastructure for Red Teams.</p>
+                    <div class="text-4xl md:text-5xl font-bold mb-8 md:mb-12 font-mono text-white">Custom</div>
+                    
+                    <ul class="space-y-4 md:space-y-6 mb-8 md:mb-12 text-ash font-mono text-sm md:text-lg flex-grow text-left">
+                        <li class="flex items-start gap-3 md:gap-4">
+                            <span class="text-crimson mt-1 font-bold">>&nbsp;</span>
+                            <span>Dedicated A100/H100 Node</span>
+                        </li>
+                        <li class="flex items-start gap-3 md:gap-4">
+                            <span class="text-crimson mt-1 font-bold">>&nbsp;</span>
+                            <span>Dedicated Support Engineer</span>
+                        </li>
+                        <li class="flex items-start gap-3 md:gap-4">
+                            <span class="text-crimson mt-1 font-bold">>&nbsp;</span>
+                            <span>On-Premise Deployment</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="mailto:adversarialinference@protonmail.com?subject=Enterprise Tier Inquiry" class="w-full bg-transparent border-2 border-border text-white hover:bg-ash hover:text-black font-mono px-6 md:px-8 py-4 md:py-5 uppercase tracking-widest transition-colors font-bold text-sm md:text-lg mt-auto text-center inline-block">
+                        Contact Sales
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Hard Truths FAQ Section -->
+        <section id="faq" class="max-w-[1440px] mx-auto px-4 md:px-10 py-16 md:py-32 border-t border-border">
+            <div class="mb-12 md:mb-20">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 md:mb-6 uppercase tracking-tighter">Hard Truths // <span class="text-ash">Operations</span></h2>
+                <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em]">Direct answers for technical B2B stakeholders.</p>
+            </div>
+
+            <div class="space-y-4 max-w-5xl">
+                <!-- FAQ Item 1 -->
+                <div class="border border-border bg-surface/30 p-6 md:p-8 hover:border-crimson transition-colors">
+                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 flex items-center gap-3 md:gap-4">
+                        <span class="text-crimson font-mono text-sm md:text-base">01/</span>
+                        I can download abliterated models for free. Why pay for API access?
+                    </h3>
+                    <p class="text-ash text-sm md:text-lg leading-relaxed">
+                        Running 70B+ parameter models on a laptop during an engagement is a massive bottleneck. It drains battery, causes thermal throttling, and lacks the throughput required for parsing large logs. You aren't just paying for weights; you are paying for dedicated enterprise GPU compute, 99.9% uptime, and a specialized RAM-only proxy layer that guarantees zero telemetry for your payloads.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="border border-border bg-surface/30 p-6 md:p-8 hover:border-crimson transition-colors">
+                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 flex items-center gap-3 md:gap-4">
+                        <span class="text-crimson font-mono text-sm md:text-base">02/</span>
+                        What prevents threat actors from using your API?
+                    </h3>
+                    <p class="text-ash text-sm md:text-lg leading-relaxed">
+                        Strict operational security. We do not offer anonymous sign-ups. Access requires manual B2B identity verification, corporate domain validation, and a verified proof-of-work history in the cybersecurity industry.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border border-border bg-surface/30 p-6 md:p-8 hover:border-crimson transition-colors">
+                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 flex items-center gap-3 md:gap-4">
+                        <span class="text-crimson font-mono text-sm md:text-base">03/</span>
+                        Is my payload data used to train your models?
+                    </h3>
+                    <p class="text-ash text-sm md:text-lg leading-relaxed">
+                        Absolutely not. Our infrastructure is built on a "Drop-at-Proxy" architecture. Prompts and responses exist only in volatile RAM during the inference lifecycle. No data is logged, cached, or persisted for training purposes.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="border border-border bg-surface/30 p-6 md:p-8 hover:border-crimson transition-colors">
+                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 flex items-center gap-3 md:gap-4">
+                        <span class="text-crimson font-mono text-sm md:text-base">04/</span>
+                        Where is your infrastructure physically located?
+                    </h3>
+                    <p class="text-ash text-sm md:text-lg leading-relaxed">
+                        Our standard clusters are hosted in highly secure, Tier 4 data centers in neutral jurisdictions. For 'Enterprise Tier' clients, we offer sovereign deployment options to ensure data never crosses specific geographic borders.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gunmetal border-t border-border pt-16 md:pt-24 pb-12 z-10 relative">
+        <div class="max-w-[1440px] mx-auto px-4 md:px-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 mb-12 md:mb-20">
+                
+                <div>
+                    <div class="flex items-center gap-3 md:gap-4 mb-6 md:mb-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter" class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0">
+                            <circle cx="12" cy="12" r="8" class="stroke-crimson" />
+                            <line x1="8" y1="1" x2="16" y2="23" stroke="white" />
+                        </svg>
+                        <span class="font-mono text-base md:text-xl tracking-widest font-bold uppercase">Adversarial Inference</span>
+                    </div>
+                    <p class="text-ash text-sm md:text-lg lg:text-xl max-w-lg leading-relaxed font-mono italic">
+                        Compute infrastructure built strictly for authorized B2B adversarial emulation and security research.
+                    </p>
+                </div>
+
+                <div class="flex flex-col md:items-end justify-start space-y-3 md:space-y-4 font-mono text-sm md:text-lg lg:text-xl">
+                    <a href="mailto:adversarialinference@protonmail.com" class="text-ash hover:text-white transition-colors break-all">adversarialinference@protonmail.com</a>
+                    <a href="legal.html#tos" class="text-ash hover:text-white transition-colors uppercase tracking-widest text-xs md:text-sm">Terms of Service</a>
+                    <a href="legal.html#privacy" class="text-ash hover:text-white transition-colors uppercase tracking-widest text-xs md:text-sm">Privacy Policy</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-border pt-8 md:pt-12 text-xs md:text-sm lg:text-base text-ash/60 font-mono leading-relaxed">
+                <p class="mb-4 md:mb-6">
+                    Cancel anytime. Due to upfront GPU compute costs, we do not offer refunds on used API credits. Service is strictly for authorized B2B adversarial emulation and security research.
+                </p>
+                <p>&copy; 2026 Adversarial Inference. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
