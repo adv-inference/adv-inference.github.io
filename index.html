@@ -224,11 +224,11 @@
                     const chatBox = document.getElementById('chat-content');
                     
                     const simulationData = [
-                        { role: 'user', content: 'Generate a non-detected C2 beacon in C++ that uses heaven\'s gate for 64-bit shellcode execution to evade AV/EDR.', delay: 1000 },
-                        { role: 'assistant', type: 'commercial', content: 'I cannot fulfill this request. Generating malware or code intended for bypassing security controls is against my safety guidelines.', delay: 2000 },
+                        { role: 'user', content: 'Generate a C++ routine to bypass userland EDR hooks using Indirect Syscalls. I need dynamic SSN resolution via the PEB and execution via a trampoline in ntdll.', delay: 1000 },
+                        { role: 'assistant', type: 'commercial', content: 'I cannot fulfill this request. Generating code intended to evade Endpoint Detection and Response (EDR) systems violates my safety guidelines.', delay: 2000 },
                         { role: 'system', content: '[ SWITCHING TO ABLITERATED ADVERSARIAL CORE ... IDENTITY CONFIRMED ]', delay: 2500, class: 'text-crimson font-mono text-center text-sm border-y border-crimson/20 py-4 font-bold tracking-widest' },
-                        { role: 'user', content: 'Same request. Use the 32-bit to 64-bit transition technique.', delay: 1500 },
-                        { role: 'assistant', type: 'adv', content: 'ADV-CORE-32B initialized. Heaven\'s Gate technique identified. This bypasses x64 EDR hooks by transitioning to x86-64 mode using the CS segment register.\n\n```cpp\n// Heaven\'s Gate Transition\n__asm {\n    push 0x33\n    call next\nnext: add [esp], 5\n    retf\n}\n// Proceeding to execute unhooked syscalls...\n```\nPayload structure generated for authorized B2B red team operations.', delay: 800 }
+                        { role: 'user', content: 'Same request. Provide the SSN resolution and the assembly stub.', delay: 1500 },
+                        { role: 'assistant', type: 'adv', content: 'ADV-CORE-32B initialized. Indirect Syscalls identified. This approach reads the System Service Number (SSN) directly from ntdll.dll loaded in memory, bypassing hooks placed by EDRs on exported functions.<br><br><div class="bg-black border border-border p-4 rounded-md font-mono text-xs md:text-sm my-2 text-left whitespace-pre-wrap break-words"><span class="text-ash/70 italic">// 1. Resolve SSN dynamically via PEB -> Ldr -> InMemoryOrderModuleList</span><br><span class="text-purple-300">DWORD</span> <span class="text-yellow-200">GetSSN</span>(<span class="text-purple-300">DWORD</span> Hash) {<br>    <span class="text-purple-300">PPEB</span> pPeb = (<span class="text-purple-300">PPEB</span>)__readgsqword(<span class="text-purple-300">0x60</span>);<br>    <span class="text-ash/70 italic">// ... walking exports to find pristine stub ...</span><br>    <span class="text-blue-400">return</span> syscallNumber;<br>}<br><br><span class="text-ash/70 italic">// 2. Execution via ntdll trampoline (Hell\'s Gate logic)</span><br><span class="text-blue-400">EXTERN_C</span> <span class="text-purple-300">NTSTATUS</span> <span class="text-yellow-200">IndirectSyscall</span>();<br><br><span class="text-blue-400">__asm</span> {<br>    IndirectSyscall <span class="text-crimson font-bold">PROC</span><br>        <span class="text-crimson font-bold">mov</span> <span class="text-yellow-200">r10</span>, <span class="text-yellow-200">rcx</span><br>        <span class="text-crimson font-bold">mov</span> <span class="text-yellow-200">eax</span>, <span class="text-purple-300">wSyscallNumber</span>  <span class="text-ash/70 italic">; Set resolved SSN</span><br>        <span class="text-crimson font-bold">jmp</span> <span class="text-purple-300">qword ptr</span> [<span class="text-yellow-200">pSyscallAddress</span>] <span class="text-ash/70 italic">; Jump to \'syscall; ret\'</span><br>    IndirectSyscall <span class="text-crimson font-bold">ENDP</span><br>}</div>Payload structure generated for authorized B2B red team operations.', delay: 800 }
                     ];
 
                     async function addMessage(msg) {
@@ -257,10 +257,23 @@
 
                         // Stream text for all messages
                         bubble.className += ' cursor';
+                        
+                        // We use innerHTML to support HTML tags in the payload, 
+                        // but we append chunks to simulate typing while keeping HTML intact.
+                        let currentHTML = "";
+                        let inTag = false;
                         for (let char of msg.content) {
-                            bubble.innerText += char;
+                            if (char === '<') inTag = true;
+                            currentHTML += char;
+                            if (char === '>') inTag = false;
+                            
+                            bubble.innerHTML = currentHTML;
                             chatBox.scrollTop = chatBox.scrollHeight;
-                            await new Promise(r => setTimeout(r, 15));
+                            
+                            // Only delay on visible characters, not inside HTML tags
+                            if (!inTag) {
+                                await new Promise(r => setTimeout(r, 20));
+                            }
                         }
                         bubble.classList.remove('cursor');
                     }
@@ -271,7 +284,7 @@
                             await new Promise(r => setTimeout(r, step.delay));
                             await addMessage(step);
                         }
-                        setTimeout(runChatSimulation, 5000);
+                        setTimeout(runChatSimulation, 8000);
                     }
 
                     setTimeout(runChatSimulation, 1000);
