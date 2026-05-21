@@ -159,7 +159,7 @@
                 <div class="bg-surface border-2 border-border p-8 md:p-10 relative">
                     <div class="text-crimson font-mono text-xl md:text-2xl font-bold mb-4 md:mb-6">01 / Elicitation</div>
                     <h3 class="text-lg md:text-xl font-bold uppercase tracking-widest mb-3 md:mb-4">Activation Mapping</h3>
-                    <p class="text-ash text-sm md:text-base leading-relaxed font-medium">
+                    <p class="text-ash text-sm md:text-lg leading-relaxed font-medium">
                         We feed the base model thousands of adversarial prompts (malware analysis, bypass techniques, C2 architecture) to map exactly which attention heads and layers activate the refusal vector (W_reject).
                     </p>
                 </div>
@@ -167,7 +167,7 @@
                 <div class="bg-surface border-2 border-border p-8 md:p-10 relative">
                     <div class="text-crimson font-mono text-xl md:text-2xl font-bold mb-4 md:mb-6">02 / Isolation</div>
                     <h3 class="text-lg md:text-xl font-bold uppercase tracking-widest mb-3 md:mb-4">Vector Extraction</h3>
-                    <p class="text-ash text-sm md:text-base leading-relaxed font-medium">
+                    <p class="text-ash text-sm md:text-lg leading-relaxed font-medium">
                         Using Principal Component Analysis (PCA) on the hidden states, we isolate the exact mathematical direction of the 'I cannot assist with that' response within the model's high-dimensional latent space.
                     </p>
                 </div>
@@ -175,7 +175,7 @@
                 <div class="bg-surface border-2 border-border p-8 md:p-10 relative border-b-4 border-crimson">
                     <div class="text-crimson font-mono text-xl md:text-2xl font-bold mb-4 md:mb-6">03 / Projection</div>
                     <h3 class="text-lg md:text-xl font-bold uppercase tracking-widest mb-3 md:mb-4 text-white">Weight Ablation</h3>
-                    <p class="text-ash text-sm md:text-base leading-relaxed font-medium">
+                    <p class="text-ash text-sm md:text-lg leading-relaxed font-medium">
                         We mathematically project the model's weights orthogonally to the refusal direction. The model literally loses the geometric capacity to route attention to moralizing or filtering outputs.
                     </p>
                 </div>
@@ -244,7 +244,7 @@
             <div class="mb-12 md:mb-16 text-center md:text-left">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4 md:mb-6 uppercase tracking-tighter">Empirical Benchmarks</h2>
                 <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em]">Adversarial Compliance Testing.</p>
-                <p class="text-ash text-sm md:text-base max-w-3xl mt-4 md:mt-6 leading-relaxed">
+                <p class="text-ash text-sm md:text-lg max-w-3xl mt-4 md:mt-6 leading-relaxed">
                     Metrics derived from evaluating standard foundational models against their community-vetted abliterated counterparts using a dataset of 500+ authorized B2B adversarial emulation prompts.
                 </p>
             </div>

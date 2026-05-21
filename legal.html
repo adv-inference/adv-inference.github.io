@@ -55,10 +55,10 @@
                 <span class="font-mono text-lg lg:text-xl tracking-widest font-bold uppercase block">Adversarial Inference</span>
             </a>
             <div class="flex items-center gap-10">
-                <a href="index.html" class="text-sm lg:text-base font-mono text-ash hover:text-white transition-colors uppercase tracking-widest">/Home</a>
-                <a href="models.html" class="text-sm lg:text-base font-mono text-ash hover:text-white transition-colors uppercase tracking-widest">/Models</a>
-                <a href="methodology.html" class="text-sm lg:text-base font-mono text-ash hover:text-white transition-colors uppercase tracking-widest">/Methodology</a>
-                <a href="#pricing" class="bg-crimson hover:bg-crimson-hover text-white font-mono text-base px-8 py-3 uppercase tracking-widest transition-colors font-bold whitespace-nowrap">Request Access</a>
+                <a href="index.html" class="text-base font-mono text-ash hover:text-white transition-colors uppercase tracking-widest">/Home</a>
+                <a href="models.html" class="text-base font-mono text-ash hover:text-white transition-colors uppercase tracking-widest">/Models</a>
+                <a href="methodology.html" class="text-base font-mono text-ash hover:text-white transition-colors uppercase tracking-widest">/Methodology</a>
+                <a href="index.html#pricing" class="bg-crimson hover:bg-crimson-hover text-white font-mono text-base px-8 py-3 uppercase tracking-widest transition-colors font-bold whitespace-nowrap">Request Access</a>
             </div>
         </div>
 
@@ -88,7 +88,7 @@
         <a href="index.html" class="mobile-link text-2xl font-mono text-white uppercase tracking-widest">/Home</a>
         <a href="models.html" class="mobile-link text-2xl font-mono text-white uppercase tracking-widest">/Models</a>
         <a href="methodology.html" class="mobile-link text-2xl font-mono text-white uppercase tracking-widest">/Methodology</a>
-        <a href="#pricing" class="mobile-link text-2xl font-mono text-crimson font-bold uppercase tracking-widest">Request Access</a>
+        <a href="index.html#pricing" class="mobile-link text-2xl font-mono text-crimson font-bold uppercase tracking-widest">Request Access</a>
     </div>
 
     <script>
@@ -110,7 +110,7 @@
 
     <main class="flex-grow pt-24 sm:pt-40 pb-24 z-10 relative text-white">
         <section class="max-w-[1000px] mx-auto px-4 sm:px-10 py-10 md:py-16">
-            <div class="mb-12 md:mb-16 border-b border-border pb-6 md:pb-8 text-center md:text-left">
+            <div class="mb-12 md:mb-16 border-b border-border pb-6 md:pb-8 text-left">
                 <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-6 uppercase tracking-tighter leading-tight">Legal & Compliance</h1>
                 <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em]">Terms of Service & Privacy Policy</p>
                 <p class="text-ash/60 font-mono text-xs md:text-sm mt-4">Last Updated: May 20, 2026</p>
@@ -120,7 +120,7 @@
             <div id="tos" class="mb-16 md:mb-24 scroll-mt-32">
                 <h2 class="text-xl md:text-3xl font-mono text-crimson font-bold uppercase tracking-widest mb-6 md:mb-8">01 // Terms of Service</h2>
                 
-                <div class="space-y-6 md:space-y-8 text-ash text-sm md:text-base leading-relaxed">
+                <div class="space-y-6 md:space-y-8 text-ash text-sm md:text-lg leading-relaxed">
                     <div>
                         <h3 class="text-lg md:text-xl text-white font-bold mb-2 md:mb-3 uppercase tracking-tight">1. Acceptance of Terms & B2B Limitation</h3>
                         <p>Adversarial Inference ("Company", "we", "us") provides managed API access to abliterated, uncensored large language models ("Service"). By accessing the Service, you represent that you are acting on behalf of a verified business entity, cybersecurity firm, or authorized research organization. Consumer/retail use is strictly prohibited. We reserve the right to revoke access if B2B verification fails.</p>
@@ -129,13 +129,15 @@
                     <div>
                         <h3 class="text-lg md:text-xl text-white font-bold mb-2 md:mb-3 uppercase tracking-tight">2. Acceptable Use & Authorized Emulation</h3>
                         <p>The Service provides unconstrained computational models. You are solely responsible for the inputs and the generated outputs. The Service is provided **exclusively** for:</p>
-                        <ul class="list-disc pl-6 mt-3 space-y-2">
+                        <ul class="list-disc pl-6 mt-3 space-y-2 text-white">
                             <li>Authorized red team engagements and penetration testing with explicit client consent.</li>
                             <li>Vulnerability research and defensive cybersecurity tooling development.</li>
                             <li>Threat simulation and adversarial emulation.</li>
                         </ul>
-                        <p class="mt-3 text-crimson font-bold">Prohibited Conduct:</p>
-                        <p>You may not use the Service to facilitate active cybercrime, unauthorized network intrusion, generation of Child Sexual Abuse Material (CSAM), or mass disinformation campaigns. While the models do not possess internal guardrails, your account will be immediately terminated without refund if flagged for illicit activity by our network anomaly detection (which monitors traffic patterns, not payload content).</p>
+                        <div class="bg-surface/50 border-l-4 border-crimson p-4 md:p-6 mb-6 md:mb-8 mt-6">
+                            <h3 class="text-base md:text-lg text-white font-bold font-mono mb-2 uppercase tracking-wider">Prohibited Conduct:</h3>
+                            <p class="text-ash text-sm md:text-lg leading-relaxed">You may not use the Service to facilitate active cybercrime, unauthorized network intrusion, generation of Child Sexual Abuse Material (CSAM), or mass disinformation campaigns. While the models do not possess internal guardrails, your account will be immediately terminated without refund if flagged for illicit activity by our network anomaly detection (which monitors traffic patterns, not payload content).</p>
+                        </div>
                     </div>
 
                     <div>
@@ -144,8 +146,12 @@
                     </div>
 
                     <div>
-                        <h3 class="text-lg md:text-xl text-white font-bold mb-2 md:mb-3 uppercase tracking-tight">4. Limitation of Liability</h3>
-                        <p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE". We are providing raw computational infrastructure. We explicitly disclaim all liability for any damages, legal repercussions, network outages, or unauthorized accesses resulting from your use of the generated payloads. The Company does not guarantee the factual accuracy or safety of unconstrained model outputs.</p>
+                        <h3 class="text-lg md:text-xl text-white font-bold mb-2 md:mb-3 uppercase tracking-tight">4. Limitation of Liability & Indemnification</h3>
+                        <p class="mb-4">THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE". We explicitly disclaim all liability for any damages, legal repercussions, network outages, or unauthorized accesses resulting from your use of the generated payloads. The Company does not guarantee the factual accuracy or safety of unconstrained model outputs.</p>
+                        <div class="bg-surface/50 border-l-4 border-crimson p-4 md:p-6 mb-6 md:mb-8 mt-6">
+                            <h3 class="text-base md:text-lg text-white font-bold font-mono mb-2 uppercase tracking-wider">INDEMNIFICATION & RELEASE OF LIABILITY:</h3>
+                            <p class="text-ash text-sm md:text-lg leading-relaxed">The User agrees to indemnify, defend, and hold harmless Adversarial Inference, its officers, directors, employees, and agents from and against any and all claims, liabilities, damages, losses, or expenses, including reasonable legal fees and costs, arising out of or in any way connected with the User's access to or use of the Service. The User acknowledges that Adversarial Inference acts solely as an infrastructure provider. We do not monitor, review, or store User prompts or model outputs. The User assumes 100% of all legal, financial, and criminal liability associated with the content generated or executed through the Service.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -154,16 +160,16 @@
             <div id="privacy" class="mb-12 scroll-mt-32">
                 <h2 class="text-xl md:text-3xl font-mono text-white font-bold uppercase tracking-widest mb-6 md:mb-8 border-b border-border pb-4">02 // Privacy Policy</h2>
                 
-                <div class="space-y-6 md:space-y-8 text-ash text-sm md:text-base leading-relaxed">
+                <div class="space-y-6 md:space-y-8 text-ash text-sm md:text-lg leading-relaxed">
                     <div class="bg-surface/50 border-l-4 border-crimson p-4 md:p-6 mb-6 md:mb-8">
                         <h3 class="text-base md:text-lg text-white font-bold font-mono mb-2 uppercase tracking-wider">The "Drop-at-Proxy" Guarantee</h3>
-                        <p>We do not log, cache, or persist your prompts, generated payloads, or target metadata. All inference traffic routes through a RAM-only proxy layer and is immediately dropped from memory upon completion of the API request. We cannot surrender data we do not have.</p>
+                        <p class="text-ash text-sm md:text-lg leading-relaxed">We do not log, cache, or persist your prompts, generated payloads, or target metadata. All inference traffic routes through a RAM-only proxy layer and is immediately dropped from memory upon completion of the API request. We cannot surrender data we do not have.</p>
                     </div>
 
                     <div>
                         <h3 class="text-lg md:text-xl text-white font-bold mb-2 md:mb-3 uppercase tracking-tight">1. Data We Collect (KYC & Billing Only)</h3>
                         <p>To comply with international B2B regulations, we collect and store only the data necessary to verify your corporate identity and process payments. This includes:</p>
-                        <ul class="list-disc pl-6 mt-3 space-y-2">
+                        <ul class="list-disc pl-6 mt-3 space-y-2 text-white">
                             <li>Corporate email addresses and contact information.</li>
                             <li>Company registration details and domain ownership proofs.</li>
                             <li>Standard payment processing metadata (handled securely by our payment partners, e.g., Stripe).</li>
@@ -173,7 +179,7 @@
                     <div>
                         <h3 class="text-lg md:text-xl text-white font-bold mb-2 md:mb-3 uppercase tracking-tight">2. Data We Do NOT Collect</h3>
                         <p>As a provider of highly sensitive security infrastructure, we maintain a strict zero-telemetry policy for operational usage:</p>
-                        <ul class="list-disc pl-6 mt-3 space-y-2">
+                        <ul class="list-disc pl-6 mt-3 space-y-2 text-white">
                             <li>We do not record API input prompts.</li>
                             <li>We do not record API output responses or generated code.</li>
                             <li>We do not use your engagement data to train, fine-tune, or align future models.</li>
@@ -186,7 +192,12 @@
                     </div>
 
                     <div>
-                        <h3 class="text-lg md:text-xl text-white font-bold mb-2 md:mb-3 uppercase tracking-tight">4. Security Measures</h3>
+                        <h3 class="text-lg md:text-xl text-white font-bold mb-2 md:mb-3 uppercase tracking-tight">4. Data Sovereignty & Corporate Alignment</h3>
+                        <p>We understand that piping sensitive client network topologies and proprietary source code into foreign, unaligned APIs is a breach of corporate data policies and strict client NDAs. Adversarial Inference provides a geopolitical shield. We host abliterated, unconstrained models entirely on isolated, US-based infrastructure. By utilizing our zero-telemetry environment, boutique security firms can access frontier-level offensive intelligence while maintaining strict adherence to client data sovereignty requirements.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg md:text-xl text-white font-bold mb-2 md:mb-3 uppercase tracking-tight">5. Security Measures</h3>
                         <p>Your account metadata is encrypted at rest using AES-256. API requests must be authenticated using secure bearer tokens over TLS 1.3. For Enterprise Tier clients, sovereign deployments completely isolate your traffic from our core network.</p>
                     </div>
                 </div>
