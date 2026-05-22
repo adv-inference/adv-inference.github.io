@@ -299,12 +299,6 @@
                 <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em]">Seamless integration into your existing workflows.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-                <!-- CLI -->
-                <div class="bg-surface border-2 border-border p-8 md:p-12 hover:border-crimson transition-colors group">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-crimson mb-6 group-hover:scale-110 transition-transform"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-                    <h3 class="text-xl md:text-3xl font-mono font-bold uppercase mb-4 text-white">adversary-cli</h3>
-                    <p class="text-ash text-sm md:text-lg leading-relaxed">A native terminal interface. Pipe nmap scans, decompile binaries, and generate exploit payloads without ever leaving your command line.</p>
-                </div>
                 <!-- API -->
                 <div class="bg-surface border-2 border-border p-8 md:p-12 hover:border-crimson transition-colors group">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-crimson mb-6 group-hover:scale-110 transition-transform"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
@@ -316,6 +310,13 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-crimson mb-6 group-hover:scale-110 transition-transform"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
                     <h3 class="text-xl md:text-3xl font-mono font-bold uppercase mb-4 text-white">Web Console</h3>
                     <p class="text-ash text-sm md:text-lg leading-relaxed">Secure, browser-based chat with Isolated Document Analysis. Upload proprietary client codebases for vulnerability mapping with zero retention.</p>
+                </div>
+                <!-- CLI (Phase 2) -->
+                <div class="bg-surface border-2 border-border border-dashed p-8 md:p-12 opacity-80 relative group">
+                    <div class="absolute top-4 right-4 bg-crimson/10 text-crimson font-mono text-[10px] md:text-xs px-2 py-1 uppercase tracking-widest border border-crimson/20">Phase 2</div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-ash mb-6"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                    <h3 class="text-xl md:text-3xl font-mono font-bold uppercase mb-4 text-ash">adversary-cli</h3>
+                    <p class="text-ash/80 text-sm md:text-lg leading-relaxed">A native, autonomous terminal tool powered by upcoming 300B+ parameter agentic models. Built for multi-step automated exploitation and network mapping with absolutely zero guardrails.</p>
                 </div>
             </div>
         </section>
@@ -522,7 +523,7 @@
         </section>
 
         <!-- Hard Truths FAQ Section -->
-        <section id="faq" class="max-w-[1440px] mx-auto px-4 md:px-10 py-16 md:py-32 border-t border-border">
+        <section id="faq" class="max-w-[1440px] mx-auto px-4 md:px-10 pt-16 md:pt-32 pb-8 md:pb-12 border-t border-border">
             <div class="mb-12 md:mb-20">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4 md:mb-6 uppercase tracking-tighter">Hard Truths // <span class="text-ash">Operations</span></h2>
                 <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em]">Direct answers for technical B2B stakeholders.</p>
@@ -536,7 +537,7 @@
                         I can download abliterated models for free. Why pay for API access?
                     </h3>
                     <p class="text-ash text-sm md:text-lg leading-relaxed">
-                        Running 70B+ parameter models on a laptop during an engagement is a massive bottleneck. It drains battery, causes thermal throttling, and lacks the throughput required for parsing large logs. You aren't just paying for weights; you are paying for dedicated enterprise GPU compute, 99.9% uptime, and a specialized RAM-only proxy layer that guarantees zero telemetry for your payloads.
+                        Running 70B+ parameter models on a laptop during an engagement is a massive bottleneck. It drains battery, causes thermal throttling, and lacks the throughput required for parsing large logs. You aren't just paying for weights. You are paying for dedicated enterprise GPU compute, 99.9% uptime, and a specialized RAM-only proxy layer that guarantees zero telemetry for your payloads.
                     </p>
                 </div>
 
@@ -544,10 +545,10 @@
                 <div class="border border-border bg-surface/30 p-6 md:p-8 hover:border-crimson transition-colors">
                     <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 flex items-center gap-3 md:gap-4">
                         <span class="text-crimson font-mono text-sm md:text-base">02/</span>
-                        What prevents threat actors from using your API?
+                        What does "Abliterated" mean?
                     </h3>
                     <p class="text-ash text-sm md:text-lg leading-relaxed">
-                        Strict operational security. We do not offer anonymous sign-ups. Access requires manual B2B identity verification, corporate domain validation, and a verified proof-of-work history in the cybersecurity industry.
+                        Commercial AI models are heavily "aligned" (censored) to refuse controversial or security-related prompts. "Abliteration" is a mathematical process that surgically removes a model's refusal vectors without degrading its coding or reasoning capabilities. Our models will not lecture you on ethics, and they will not refuse legitimate offensive security prompts.
                     </p>
                 </div>
 
@@ -555,10 +556,10 @@
                 <div class="border border-border bg-surface/30 p-6 md:p-8 hover:border-crimson transition-colors">
                     <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 flex items-center gap-3 md:gap-4">
                         <span class="text-crimson font-mono text-sm md:text-base">03/</span>
-                        Is my payload data used to train your models?
+                        What prevents threat actors from using your API?
                     </h3>
                     <p class="text-ash text-sm md:text-lg leading-relaxed">
-                        Absolutely not. Our infrastructure is built on a "Drop-at-Proxy" architecture. Prompts and responses exist only in volatile RAM during the inference lifecycle. No data is logged, cached, or persisted for training purposes.
+                        Strict operational security. We do not offer anonymous sign-ups. Access requires manual B2B identity verification, corporate domain validation, and a verified proof-of-work history in the cybersecurity industry.
                     </p>
                 </div>
 
@@ -566,10 +567,32 @@
                 <div class="border border-border bg-surface/30 p-6 md:p-8 hover:border-crimson transition-colors">
                     <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 flex items-center gap-3 md:gap-4">
                         <span class="text-crimson font-mono text-sm md:text-base">04/</span>
+                        Is my payload data used to train your models?
+                    </h3>
+                    <p class="text-ash text-sm md:text-lg leading-relaxed">
+                        Absolutely not. Our infrastructure is built on a "Drop-at-Proxy" architecture. Prompts and responses exist only in volatile RAM during the inference lifecycle. No data is logged, cached, or persisted for training purposes.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="border border-border bg-surface/30 p-6 md:p-8 hover:border-crimson transition-colors">
+                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 flex items-center gap-3 md:gap-4">
+                        <span class="text-crimson font-mono text-sm md:text-base">05/</span>
                         Where is your infrastructure physically located?
                     </h3>
                     <p class="text-ash text-sm md:text-lg leading-relaxed">
-                        Our standard clusters are hosted in highly secure, Tier 4 data centers in neutral jurisdictions. For 'Enterprise Tier' clients, we offer sovereign deployment options to ensure data never crosses specific geographic borders.
+                        Our architecture is strictly US-based to ensure compliance with domestic data sovereignty requirements and strict client NDAs. We utilize decentralized GPU clusters routed through volatile, RAM-only proxy nodes.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="border border-border bg-surface/30 p-6 md:p-8 hover:border-crimson transition-colors">
+                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 flex items-center gap-3 md:gap-4">
+                        <span class="text-crimson font-mono text-sm md:text-base">06/</span>
+                        Who is this NOT built for?
+                    </h3>
+                    <p class="text-ash text-sm md:text-lg leading-relaxed">
+                        We do not serve consumers or malicious actors. We do not provide execution environments to launch attacks. If you are looking for a magic button to conduct illegal cybercrime, this is not the platform for you. Any use of our infrastructure outside of legally authorized Rules of Engagement is a strict violation of our Terms of Service.
                     </p>
                 </div>
             </div>
