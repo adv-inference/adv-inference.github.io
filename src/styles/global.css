@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-crimson: #D90000;
+  --color-crimson-hover: #FF0000;
+  --color-gunmetal: #0A0A0A;
+  --color-surface: #111111;
+  --color-ash: #A1A1AA;
+  --color-border: #27272A;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+body {
+  background-color: #000000;
+  color: #FFFFFF;
+  font-size: 18px;
+}
+
+::selection {
+  background-color: #D90000;
+  color: #FFFFFF;
+}
+
+.scanlines::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 50;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+.cursor::after {
+  content: "|";
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
