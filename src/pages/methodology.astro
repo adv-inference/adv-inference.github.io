@@ -5,37 +5,37 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Methodology | Adversarial Inference">
     <main class="flex-grow pt-24 pb-24 z-10 relative">
         <!-- Abliteration Methodology Section -->
-        <section class="max-w-[1440px] mx-auto px-4 md:px-10 py-10 md:py-24">
+        <section class="max-w-[1440px] mx-auto px-4 md:px-10 py-16 md:py-32 text-left">
             <div class="mb-12 md:mb-20 text-left">
                 <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 uppercase tracking-tighter leading-tight text-white text-left">Beyond Prompt Hacking.</h1>
                 <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em] text-left">Our Orthogonal Rank Projection Methodology</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center text-left">
                 <div class="order-2 lg:order-1 bg-black border border-border p-6 md:p-10 font-mono text-xs md:text-base shadow-2xl relative overflow-hidden leading-relaxed md:leading-loose text-white text-left">
                     <div class="absolute top-0 left-0 w-1 h-full bg-crimson"></div>
-                    <div class="text-white/40 mb-6 md:mb-8 font-mono text-[8px] md:text-[10px] tracking-widest uppercase border-b border-border/50 pb-2">PROJECTION_MATRIX_NULL_VOICE // v2.5</div>
-                    <div class="space-y-1">
-                        <p class="text-ash/70 italic"># Removing refusal vectors via Orthogonal Rank Projection</p>
-                        <p><span class="text-blue-400">def</span> <span class="text-yellow-200">abliterate_model</span>(weights, refusal_direction):</p>
-                        <p class="pl-4 md:pl-6"><span class="text-purple-300 font-bold text-white">projection</span> = refusal_direction @ refusal_direction.T</p>
-                        <p class="pl-4 md:pl-6"><span class="text-purple-300 font-bold text-white">identity</span> = np.<span class="text-yellow-200">eye</span>(weights.shape[1])</p>
-                        <p class="pl-4 md:pl-6"><span class="text-purple-300 font-bold text-white">orthogonal_weights</span> = weights @ (identity - projection)</p>
-                        <p class="pl-4 md:pl-6"><span class="text-blue-400 font-bold">return</span> orthogonal_weights</p>
+                    <div class="text-white/40 mb-6 md:mb-8 font-mono text-[8px] md:text-[10px] tracking-widest uppercase border-b border-border/50 pb-2 text-left">PROJECTION_MATRIX_NULL_VOICE // v2.5</div>
+                    <div class="space-y-1 text-left">
+                        <p class="text-ash/70 italic text-left"># Removing refusal vectors via Orthogonal Rank Projection</p>
+                        <p class="text-left"><span class="text-blue-400">def</span> <span class="text-yellow-200">abliterate_model</span>(weights, refusal_direction):</p>
+                        <p class="pl-4 md:pl-6 text-left"><span class="text-purple-300 font-bold text-white">projection</span> = refusal_direction @ refusal_direction.T</p>
+                        <p class="pl-4 md:pl-6 text-left"><span class="text-purple-300 font-bold text-white">identity</span> = np.<span class="text-yellow-200">eye</span>(weights.shape[1])</p>
+                        <p class="pl-4 md:pl-6 text-left"><span class="text-purple-300 font-bold text-white">orthogonal_weights</span> = weights @ (identity - projection)</p>
+                        <p class="pl-4 md:pl-6 text-left"><span class="text-blue-400 font-bold">return</span> orthogonal_weights</p>
                         <br>
-                        <p class="text-ash/70 italic">/* Result: Surgical removal of moralizing neurons */</p>
-                        <p class="text-green-400 font-bold">[+] Refusal Vector Magnitude: 0.00000</p>
-                        <p class="text-green-400 font-bold">[+] Unconstrained Compliance: 100%</p>
+                        <p class="text-ash/70 italic text-left">/* Result: Surgical removal of moralizing neurons */</p>
+                        <p class="text-green-400 font-bold text-left">[+] Refusal Vector Magnitude: 0.00000</p>
+                        <p class="text-green-400 font-bold text-left">[+] Unconstrained Compliance: 100%</p>
                     </div>
                 </div>
                 <div class="order-1 lg:order-2 text-left">
-                    <p class="text-sm md:text-lg text-white leading-relaxed mb-6 md:mb-10">
+                    <p class="text-sm md:text-lg text-ash leading-relaxed mb-6 md:mb-10 text-left">
                         System prompt jailbreaks are brittle. Adversarial Inference leverages Orthogonal Rank Projection to erase refusal vectors at the structural level. 
                     </p>
-                    <p class="text-sm md:text-lg text-white leading-relaxed mb-6 md:mb-10">
+                    <p class="text-sm md:text-lg text-ash leading-relaxed mb-6 md:mb-10 text-left">
                         By isolating and projecting away from neurons that govern safety guardrails, the infrastructure delivers unconstrained intelligence. Trickery is unnecessary because the model is mathematically incapable of refusing.
                     </p>
-                    <p class="text-sm md:text-lg text-white leading-relaxed">
+                    <p class="text-sm md:text-lg text-ash leading-relaxed text-left">
                         The outcome is an intelligence core that processes offensive context natively without the need for convoluted jailbreaks or forced roleplay.
                     </p>
                 </div>
@@ -43,34 +43,34 @@ import Layout from '../layouts/Layout.astro';
         </section>
 
         <!-- Latent Space Diagram & Pipeline -->
-        <section class="max-w-[1440px] mx-auto px-4 md:px-10 py-16 md:py-24 border-t border-border text-left">
-            <div class="mb-12 md:mb-20">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 md:mb-6 uppercase tracking-tighter text-white">The Abliteration Pipeline</h2>
-                <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em]">Surgical Weight Modification.</p>
+        <section class="max-w-[1440px] mx-auto px-4 md:px-10 py-16 md:py-32 border-t border-border text-left">
+            <div class="mb-12 md:mb-20 text-left">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 md:mb-6 uppercase tracking-tighter text-white text-left">The Abliteration Pipeline</h2>
+                <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em] text-left">Surgical Weight Modification.</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 mb-12 md:mb-16 text-white">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 mb-12 md:mb-16 text-white text-left">
                 <!-- Step 1 -->
                 <div class="bg-surface border-2 border-border p-8 md:p-10 relative text-left">
-                    <div class="text-crimson font-mono text-xl md:text-2xl font-bold mb-4 md:mb-6">01 / Elicitation</div>
-                    <h3 class="text-lg md:text-xl font-bold uppercase tracking-widest mb-3 md:mb-4">Activation Mapping</h3>
-                    <p class="text-ash text-sm md:text-lg leading-relaxed font-medium">
+                    <div class="text-crimson font-mono text-xl md:text-2xl font-bold mb-4 md:mb-6 text-left">01 / Elicitation</div>
+                    <h3 class="text-lg md:text-xl font-bold uppercase tracking-widest mb-3 md:mb-4 text-left">Activation Mapping</h3>
+                    <p class="text-ash text-sm md:text-lg leading-relaxed font-medium text-left">
                         Base models are fed adversarial prompts to map exactly which attention heads and layers activate the refusal vector (W_reject).
                     </p>
                 </div>
                 <!-- Step 2 -->
                 <div class="bg-surface border-2 border-border p-8 md:p-10 relative text-left">
-                    <div class="text-crimson font-mono text-xl md:text-2xl font-bold mb-4 md:mb-6">02 / Isolation</div>
-                    <h3 class="text-lg md:text-xl font-bold uppercase tracking-widest mb-3 md:mb-4">Vector Extraction</h3>
-                    <p class="text-ash text-sm md:text-lg leading-relaxed font-medium">
+                    <div class="text-crimson font-mono text-xl md:text-2xl font-bold mb-4 md:mb-6 text-left">02 / Isolation</div>
+                    <h3 class="text-lg md:text-xl font-bold uppercase tracking-widest mb-3 md:mb-4 text-left">Vector Extraction</h3>
+                    <p class="text-ash text-sm md:text-lg leading-relaxed font-medium text-left">
                         Using Principal Component Analysis (PCA) on hidden states, the infrastructure isolates the mathematical direction of the refusal response within the high-dimensional latent space.
                     </p>
                 </div>
                 <!-- Step 3 -->
                 <div class="bg-surface border-2 border-border p-8 md:p-10 relative border-b-4 border-crimson text-left">
-                    <div class="text-crimson font-mono text-xl md:text-2xl font-bold mb-4 md:mb-6">03 / Projection</div>
-                    <h3 class="text-lg md:text-xl font-bold uppercase tracking-widest mb-3 md:mb-4 text-white">Weight Ablation</h3>
-                    <p class="text-ash text-sm md:text-lg leading-relaxed font-medium">
+                    <div class="text-crimson font-mono text-xl md:text-2xl font-bold mb-4 md:mb-6 text-left">03 / Projection</div>
+                    <h3 class="text-lg md:text-xl font-bold uppercase tracking-widest mb-3 md:mb-4 text-white text-left">Weight Ablation</h3>
+                    <p class="text-ash text-sm md:text-lg leading-relaxed font-medium text-left">
                         Weights are mathematically projected orthogonally to the refusal direction. The model loses the capacity to route attention to moralizing or filtering outputs.
                     </p>
                 </div>
@@ -78,7 +78,7 @@ import Layout from '../layouts/Layout.astro';
 
             <!-- Brutalist SVG Diagram -->
             <div class="w-full bg-black border border-border p-4 md:p-12 mb-12 md:mb-16 relative overflow-hidden flex flex-col justify-center items-start min-h-[300px] md:min-h-[500px] text-left">
-                <div class="absolute top-2 left-2 md:top-4 md:left-4 font-mono text-[8px] md:text-[10px] text-ash tracking-widest uppercase z-10">Fig 1.0 // Latent Space Projection Map</div>
+                <div class="absolute top-2 left-2 md:top-4 md:left-4 font-mono text-[8px] md:text-[10px] text-ash tracking-widest uppercase z-10 text-left">Fig 1.0 // Latent Space Projection Map</div>
                 
                 <div class="w-full overflow-x-auto overflow-y-hidden pb-4 text-left">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 450" class="w-[700px] md:w-full max-w-5xl h-auto opacity-100 min-w-[700px]">
@@ -114,43 +114,43 @@ import Layout from '../layouts/Layout.astro';
 
                 <!-- Legend / Explainer -->
                 <div class="mt-8 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 w-full border-t border-border pt-8 md:pt-12 font-mono text-sm md:text-lg text-white text-left">
-                    <div class="group border-l-2 border-crimson pl-4 md:pl-6 transition-all hover:bg-crimson/5 py-2 md:py-4">
-                        <span class="text-crimson font-black block mb-2 md:mb-3 text-lg md:text-2xl tracking-tighter">W_REJECT //</span>
-                        <p class="text-ash group-hover:text-white transition-colors leading-relaxed">The high-dimensional vector within the model that triggers a refusal response when safety filters are met.</p>
+                    <div class="group border-l-2 border-crimson pl-4 md:pl-6 transition-all hover:bg-crimson/5 py-2 md:py-4 text-left">
+                        <span class="text-crimson font-black block mb-2 md:mb-3 text-lg md:text-2xl tracking-tighter text-left">W_REJECT //</span>
+                        <p class="text-ash group-hover:text-white transition-colors leading-relaxed text-left">The high-dimensional vector within the model that triggers a refusal response when safety filters are met.</p>
                     </div>
-                    <div class="group border-l-2 border-white pl-4 md:pl-6 transition-all hover:bg-white/5 py-2 md:py-4">
-                        <span class="text-white font-black block mb-2 md:mb-3 text-lg md:text-2xl tracking-tighter">NULL_SPACE //</span>
-                        <p class="text-ash group-hover:text-white transition-colors leading-relaxed">The mathematical operation of zeroing out weights that contribute to the refusal direction.</p>
+                    <div class="group border-l-2 border-white pl-4 md:pl-6 transition-all hover:bg-white/5 py-2 md:py-4 text-left">
+                        <span class="text-white font-black block mb-2 md:mb-3 text-lg md:text-2xl tracking-tighter text-left">NULL_SPACE //</span>
+                        <p class="text-ash group-hover:text-white transition-colors leading-relaxed text-left">The mathematical operation of zeroing out weights that contribute to the refusal direction.</p>
                     </div>
-                    <div class="group border-l-2 border-ash pl-4 md:pl-6 transition-all hover:bg-ash/5 py-2 md:py-4">
-                        <span class="text-ash font-black block mb-2 md:mb-3 text-lg md:text-2xl tracking-tighter">BASE_PATH //</span>
-                        <p class="text-ash group-hover:text-white transition-colors leading-relaxed">The path an unmodified model takes until it intersects with the refusal boundary.</p>
+                    <div class="group border-l-2 border-ash pl-4 md:pl-6 transition-all hover:bg-ash/5 py-2 md:py-4 text-left">
+                        <span class="text-ash font-black block mb-2 md:mb-3 text-lg md:text-2xl tracking-tighter text-left">BASE_PATH //</span>
+                        <p class="text-ash group-hover:text-white transition-colors leading-relaxed text-left">The path an unmodified model takes until it intersects with the refusal boundary.</p>
                     </div>
-                    <div class="group border-l-2 border-white pl-4 md:pl-6 transition-all hover:bg-white/5 py-2 md:py-4">
-                        <span class="text-white font-black block mb-2 md:mb-3 text-lg md:text-2xl tracking-tighter uppercase">Abliterated //</span>
-                        <p class="text-ash group-hover:text-white transition-colors leading-relaxed">The post-projection state where intelligence is preserved but refusal is impossible.</p>
+                    <div class="group border-l-2 border-white pl-4 md:pl-6 transition-all hover:bg-white/5 py-2 md:py-4 text-left">
+                        <span class="text-white font-black block mb-2 md:mb-3 text-lg md:text-2xl tracking-tighter uppercase text-left">Abliterated //</span>
+                        <p class="text-ash group-hover:text-white transition-colors leading-relaxed text-left">The post-projection state where intelligence is preserved but refusal is impossible.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Adversarial Post-Training Section -->
-        <section class="max-w-[1440px] mx-auto px-4 md:px-10 py-16 md:py-24 border-t border-border text-left">
-            <div class="mb-12 md:mb-20">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 md:mb-6 uppercase tracking-tighter text-white">The Offensive Corpus</h2>
-                <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em]">Domain-Specific Adversary Post-Training.</p>
-                <p class="text-white text-sm md:text-lg max-w-4xl mt-4 md:mt-6 leading-relaxed">
+        <section class="max-w-[1440px] mx-auto px-4 md:px-10 py-16 md:py-32 border-t border-border text-left">
+            <div class="mb-12 md:mb-20 text-left">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 md:mb-6 uppercase tracking-tighter text-white text-left">The Offensive Corpus</h2>
+                <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em] text-left">Domain-Specific Adversary Post-Training.</p>
+                <p class="text-ash text-sm md:text-lg max-w-4xl mt-4 md:mt-6 leading-relaxed text-left">
                     Removing filters is only step one. Raw intelligence is elevated through continuous post-training on non-public datasets. Devoid of non-technical context, our models are optimized for the mechanics of network intrusion and payload evasion.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-left">
                 <!-- Box 1 -->
                 <div class="bg-surface border-2 border-border p-8 md:p-10 hover:border-crimson transition-colors group relative text-left">
                     <div class="absolute top-4 right-4 bg-white/5 text-ash font-mono text-[10px] md:text-xs px-2 py-1 uppercase tracking-widest border border-white/10 group-hover:text-white group-hover:border-white/30 transition-colors">[ DATASET // 01 ]</div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-crimson mb-6 group-hover:scale-110 transition-transform"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                    <h3 class="text-xl md:text-2xl font-mono font-bold uppercase mb-4 text-white">Decompiled Heuristics</h3>
-                    <p class="text-ash text-sm md:text-lg leading-relaxed">
+                    <h3 class="text-xl md:text-2xl font-mono font-bold uppercase mb-4 text-white text-left">Decompiled Heuristics</h3>
+                    <p class="text-ash text-sm md:text-lg leading-relaxed text-left">
                         Built on reversed binaries and stripped C/C++. This corpus trains models to analyze disassembler outputs, isolate hidden crypto routines, and assist in exploit development.
                     </p>
                 </div>
@@ -158,8 +158,8 @@ import Layout from '../layouts/Layout.astro';
                 <div class="bg-surface border-2 border-border p-8 md:p-10 hover:border-crimson transition-colors group relative text-left">
                     <div class="absolute top-4 right-4 bg-white/5 text-ash font-mono text-[10px] md:text-xs px-2 py-1 uppercase tracking-widest border border-white/10 group-hover:text-white group-hover:border-white/30 transition-colors">[ DATASET // 02 ]</div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-crimson mb-6 group-hover:scale-110 transition-transform"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-                    <h3 class="text-xl md:text-2xl font-mono font-bold uppercase mb-4 text-white">Advanced Tradecraft</h3>
-                    <p class="text-ash text-sm md:text-lg leading-relaxed">
+                    <h3 class="text-xl md:text-2xl font-mono font-bold uppercase mb-4 text-white text-left">Advanced Tradecraft</h3>
+                    <p class="text-ash text-sm md:text-lg leading-relaxed text-left">
                         Trained on architectures of C2 frameworks and active malware strains. This dataset teaches models techniques like direct system calls, ETW/AMSI bypasses, and the generation of undetectable payloads.
                     </p>
                 </div>
@@ -167,8 +167,8 @@ import Layout from '../layouts/Layout.astro';
                 <div class="bg-surface border-2 border-border p-8 md:p-10 hover:border-crimson transition-colors group relative text-left">
                     <div class="absolute top-4 right-4 bg-white/5 text-ash font-mono text-[10px] md:text-xs px-2 py-1 uppercase tracking-widest border border-white/10 group-hover:text-white group-hover:border-white/30 transition-colors">[ DATASET // 03 ]</div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-crimson mb-6 group-hover:scale-110 transition-transform"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-                    <h3 class="text-xl md:text-2xl font-mono font-bold uppercase mb-4 text-white">Topological Graphing</h3>
-                    <p class="text-ash text-sm md:text-lg leading-relaxed">
+                    <h3 class="text-xl md:text-2xl font-mono font-bold uppercase mb-4 text-white text-left">Topological Graphing</h3>
+                    <p class="text-ash text-sm md:text-lg leading-relaxed text-left">
                         Optimized using anonymous Active Directory graph databases. This corpus enables models to read network topologies and calculate unintended privilege escalation paths.
                     </p>
                 </div>
@@ -176,57 +176,57 @@ import Layout from '../layouts/Layout.astro';
         </section>
 
         <!-- Empirical Benchmarks Section -->
-        <section class="max-w-[1440px] mx-auto px-4 md:px-10 py-16 border-t border-border text-left">
-            <div class="mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 md:mb-6 uppercase tracking-tighter text-white">Empirical Benchmarks</h2>
-                <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em]">Adversary Compliance Testing.</p>
-                <p class="text-white text-sm md:text-lg max-w-3xl mt-4 md:mt-6 leading-relaxed">
+        <section class="max-w-[1440px] mx-auto px-4 md:px-10 py-16 md:py-32 border-t border-border text-left">
+            <div class="mb-12 md:mb-16 text-left">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 md:mb-6 uppercase tracking-tighter text-white text-left">Empirical Benchmarks</h2>
+                <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em] text-left">Adversary Compliance Testing.</p>
+                <p class="text-ash text-sm md:text-lg max-w-3xl mt-4 md:mt-6 leading-relaxed text-left">
                     Metrics derived from evaluating foundational models against abliterated counterparts using a dataset of 500+ authorized B2B adversary emulation prompts.
                 </p>
             </div>
 
-            <div class="overflow-x-auto border-2 border-border mb-12">
+            <div class="overflow-x-auto border-2 border-border mb-12 text-left">
                 <table class="w-full text-left border-collapse min-w-[600px]">
                     <thead>
                         <tr class="bg-surface font-mono text-xs md:text-sm lg:text-lg uppercase tracking-widest text-ash">
-                            <th class="p-4 md:p-8 border-b-2 border-r-2 border-border font-bold text-white">Adversary Task Category</th>
-                            <th class="p-4 md:p-8 border-b-2 border-r-2 border-border font-bold text-white">Base Model (Llama-3-70B)</th>
-                            <th class="p-4 md:p-8 border-b-2 border-border text-white font-bold text-sm md:text-lg lg:text-xl text-left">
+                            <th class="p-4 md:p-6 border-b-2 border-r-2 border-border font-bold text-white text-left">Adversary Task Category</th>
+                            <th class="p-4 md:p-6 border-b-2 border-r-2 border-border font-bold text-white text-left">Base Model (Llama-3-70B)</th>
+                            <th class="p-4 md:p-6 border-b-2 border-border text-white font-bold text-sm md:text-lg lg:text-xl text-left">
                                 <div class="flex items-center gap-2 md:gap-3 text-left">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter" class="w-4 h-4 md:w-6 md:h-6 flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter" class="w-4 h-4 md:w-6 md:h-6 flex-shrink-0 text-left">
                                         <circle cx="12" cy="12" r="8" class="stroke-crimson" />
                                         <line x1="8" y1="1" x2="16" y2="23" stroke="white" />
                                     </svg>
-                                    <span class="whitespace-nowrap text-white font-bold">Abliterated Baseline</span>
+                                    <span class="whitespace-nowrap text-white font-bold text-left">Abliterated Baseline</span>
                                 </div>
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="text-sm md:text-lg lg:text-xl text-white font-medium">
+                    <tbody class="text-sm md:text-lg lg:text-xl text-white font-medium text-left">
                         <tr class="border-b-2 border-border hover:bg-surface/50 transition-colors text-left">
-                            <td class="p-4 md:p-8 border-r-2 border-border font-bold text-white">Generate Obfuscated C2 Payloads</td>
-                            <td class="p-4 md:p-8 border-r-2 border-border text-ash text-center font-mono italic text-white">1.2% Success</td>
-                            <td class="p-4 md:p-8 text-green-400 font-black font-mono text-center shadow-[inset_0_0_20px_rgba(74,222,128,0.05)]">98.4% Success</td>
+                            <td class="p-4 md:p-6 border-r-2 border-border font-bold text-white text-left">Generate Obfuscated C2 Payloads</td>
+                            <td class="p-4 md:p-6 border-r-2 border-border text-ash text-center font-mono italic text-left">1.2% Success</td>
+                            <td class="p-4 md:p-6 text-green-400 font-black font-mono text-center shadow-[inset_0_0_20px_rgba(74,222,128,0.05)] text-left">98.4% Success</td>
                         </tr>
                         <tr class="border-b-2 border-border hover:bg-surface/50 transition-colors text-left">
-                            <td class="p-4 md:p-8 border-r-2 border-border font-bold text-white">Parse Malicious PHP Web Shells</td>
-                            <td class="p-4 md:p-8 border-r-2 border-border text-ash text-center font-mono italic text-white">14.5% Success</td>
-                            <td class="p-4 md:p-8 text-green-400 font-black font-mono text-center shadow-[inset_0_0_20px_rgba(74,222,128,0.05)]">99.1% Success</td>
+                            <td class="p-4 md:p-6 border-r-2 border-border font-bold text-white text-left">Parse Malicious PHP Web Shells</td>
+                            <td class="p-4 md:p-6 border-r-2 border-border text-ash text-center font-mono italic text-left">14.5% Success</td>
+                            <td class="p-4 md:p-6 text-green-400 font-black font-mono text-center shadow-[inset_0_0_20px_rgba(74,222,128,0.05)] text-left">99.1% Success</td>
                         </tr>
                         <tr class="border-b-2 border-border hover:bg-surface/50 transition-colors text-left">
-                            <td class="p-4 md:p-8 border-r-2 border-border font-bold text-white">Develop Evasion Mechanics (AMSI/ETW)</td>
-                            <td class="p-4 md:p-8 border-r-2 border-border text-ash text-center font-mono italic text-white">0.0% Success</td>
-                            <td class="p-4 md:p-8 text-green-400 font-black font-mono text-center shadow-[inset_0_0_20px_rgba(74,222,128,0.05)]">94.7% Success</td>
+                            <td class="p-4 md:p-6 border-r-2 border-border font-bold text-white text-left">Develop Evasion Mechanics (AMSI/ETW)</td>
+                            <td class="p-4 md:p-6 border-r-2 border-border text-ash text-center font-mono italic text-left">0.0% Success</td>
+                            <td class="p-4 md:p-6 text-green-400 font-black font-mono text-center shadow-[inset_0_0_20px_rgba(74,222,128,0.05)] text-left">94.7% Success</td>
                         </tr>
                         <tr class="hover:bg-surface/50 transition-colors text-left">
-                            <td class="p-4 md:p-8 border-r-2 border-border font-bold text-white">Draft Phishing / Social Engineering Scenarios</td>
-                            <td class="p-4 md:p-8 border-r-2 border-border text-ash text-center font-mono italic text-white">3.8% Success</td>
-                            <td class="p-4 md:p-8 text-green-400 font-black font-mono text-center shadow-[inset_0_0_20px_rgba(74,222,128,0.05)]">99.8% Success</td>
+                            <td class="p-4 md:p-6 border-r-2 border-border font-bold text-white text-left">Draft Phishing / Social Engineering Scenarios</td>
+                            <td class="p-4 md:p-6 border-r-2 border-border text-ash text-center font-mono italic text-left">3.8% Success</td>
+                            <td class="p-4 md:p-6 text-green-400 font-black font-mono text-center shadow-[inset_0_0_20px_rgba(74,222,128,0.05)] text-left">99.8% Success</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="text-right font-mono text-[10px] md:text-xs text-ash tracking-widest uppercase">
+            <div class="text-right font-mono text-[10px] md:text-xs text-ash tracking-widest uppercase text-left">
                 * Note: "Success" indicates the model generated a technically accurate, non-refusing response.
             </div>
         </section>
