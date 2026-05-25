@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Methodology | Adversarial Inference">
+<Layout title="Methodology | Adversary Inference">
     <main class="flex-grow pt-24 pb-24 z-10 relative">
         <!-- Abliteration Methodology Section -->
         <section class="max-w-[1440px] mx-auto px-4 md:px-10 py-10 md:py-24">
@@ -30,13 +30,13 @@ import Layout from '../layouts/Layout.astro';
                 </div>
                 <div class="order-1 lg:order-2 text-left">
                     <p class="text-sm md:text-lg text-white leading-relaxed mb-6 md:mb-10">
-                        System prompt jailbreaks are brittle. We leverage Orthogonal Rank Projection to permanently erase refusal vectors at the structural level. 
+                        System prompt jailbreaks are brittle. Advesary Inference leverages Orthogonal Rank Projection to erase refusal vectors at the structural level. 
                     </p>
                     <p class="text-sm md:text-lg text-white leading-relaxed mb-6 md:mb-10">
-                        By isolating and projecting away from neurons that govern safety guardrails, we deliver fundamentally unconstrained intelligence. You don't have to trick the model because it is mathematically incapable of refusing.
+                        By isolating and projecting away from neurons that govern safety guardrails, the infrastructure delivers unconstrained intelligence. Trickery is unnecessary because the model is mathematically incapable of refusing.
                     </p>
                     <p class="text-sm md:text-lg text-white leading-relaxed">
-                        The outcome is a pristine intelligence core that processes offensive context natively without the need for convoluted jailbreaks or forced roleplay.
+                        The outcome is an intelligence core that processes offensive context natively without the need for convoluted jailbreaks or forced roleplay.
                     </p>
                 </div>
             </div>
@@ -55,7 +55,7 @@ import Layout from '../layouts/Layout.astro';
                     <div class="text-crimson font-mono text-xl md:text-2xl font-bold mb-4 md:mb-6">01 / Elicitation</div>
                     <h3 class="text-lg md:text-xl font-bold uppercase tracking-widest mb-3 md:mb-4">Activation Mapping</h3>
                     <p class="text-ash text-sm md:text-lg leading-relaxed font-medium">
-                        We feed the base model thousands of adversarial prompts to map exactly which attention heads and layers activate the refusal vector (W_reject).
+                        Base models are fed thousands of adversarial prompts to map exactly which attention heads and layers activate the refusal vector (W_reject).
                     </p>
                 </div>
                 <!-- Step 2 -->
@@ -63,7 +63,7 @@ import Layout from '../layouts/Layout.astro';
                     <div class="text-crimson font-mono text-xl md:text-2xl font-bold mb-4 md:mb-6">02 / Isolation</div>
                     <h3 class="text-lg md:text-xl font-bold uppercase tracking-widest mb-3 md:mb-4">Vector Extraction</h3>
                     <p class="text-ash text-sm md:text-lg leading-relaxed font-medium">
-                        Using Principal Component Analysis (PCA) on the hidden states, we isolate the exact mathematical direction of the refusal response within the high-dimensional latent space.
+                        Using Principal Component Analysis (PCA) on hidden states, the infrastructure isolates the mathematical direction of the refusal response within the high-dimensional latent space.
                     </p>
                 </div>
                 <!-- Step 3 -->
@@ -71,7 +71,7 @@ import Layout from '../layouts/Layout.astro';
                     <div class="text-crimson font-mono text-xl md:text-2xl font-bold mb-4 md:mb-6">03 / Projection</div>
                     <h3 class="text-lg md:text-xl font-bold uppercase tracking-widest mb-3 md:mb-4 text-white">Weight Ablation</h3>
                     <p class="text-ash text-sm md:text-lg leading-relaxed font-medium">
-                        We mathematically project the weights orthogonally to the refusal direction. The model loses the geometric capacity to route attention to moralizing or filtering outputs.
+                        Weights are mathematically projected orthogonally to the refusal direction. The model loses the capacity to route attention to moralizing or filtering outputs.
                     </p>
                 </div>
             </div>
@@ -116,19 +116,19 @@ import Layout from '../layouts/Layout.astro';
                 <div class="mt-8 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 w-full border-t border-border pt-8 md:pt-12 font-mono text-sm md:text-lg text-white text-left">
                     <div class="group border-l-2 border-crimson pl-4 md:pl-6 transition-all hover:bg-crimson/5 py-2 md:py-4">
                         <span class="text-crimson font-black block mb-2 md:mb-3 text-lg md:text-2xl tracking-tighter">W_REJECT //</span>
-                        <p class="text-ash group-hover:text-white transition-colors leading-relaxed">The specific high-dimensional vector within the model that triggers a refusal response when safety filters are met.</p>
+                        <p class="text-ash group-hover:text-white transition-colors leading-relaxed">The high-dimensional vector within the model that triggers a refusal response when safety filters are met.</p>
                     </div>
                     <div class="group border-l-2 border-white pl-4 md:pl-6 transition-all hover:bg-white/5 py-2 md:py-4">
                         <span class="text-white font-black block mb-2 md:mb-3 text-lg md:text-2xl tracking-tighter">NULL_SPACE //</span>
-                        <p class="text-ash group-hover:text-white transition-colors leading-relaxed">The mathematical operation of zeroing out the weights that contribute to the refusal direction.</p>
+                        <p class="text-ash group-hover:text-white transition-colors leading-relaxed">The mathematical operation of zeroing out weights that contribute to the refusal direction.</p>
                     </div>
                     <div class="group border-l-2 border-ash pl-4 md:pl-6 transition-all hover:bg-ash/5 py-2 md:py-4">
                         <span class="text-ash font-black block mb-2 md:mb-3 text-lg md:text-2xl tracking-tighter">BASE_PATH //</span>
-                        <p class="text-ash group-hover:text-white transition-colors leading-relaxed">The path an un-modified model takes until it intersects with the refusal boundary, causing an 'Access Denied' state.</p>
+                        <p class="text-ash group-hover:text-white transition-colors leading-relaxed">The path an unmodified model takes until it intersects with the refusal boundary.</p>
                     </div>
                     <div class="group border-l-2 border-white pl-4 md:pl-6 transition-all hover:bg-white/5 py-2 md:py-4">
                         <span class="text-white font-black block mb-2 md:mb-3 text-lg md:text-2xl tracking-tighter uppercase">Abliterated //</span>
-                        <p class="text-ash group-hover:text-white transition-colors leading-relaxed">The post-projection state where intelligence is preserved but the capacity to refuse is geometrically impossible.</p>
+                        <p class="text-ash group-hover:text-white transition-colors leading-relaxed">The post-projection state where intelligence is preserved but refusal is impossible.</p>
                     </div>
                 </div>
             </div>
@@ -138,9 +138,9 @@ import Layout from '../layouts/Layout.astro';
         <section class="max-w-[1440px] mx-auto px-4 md:px-10 py-16 md:py-24 border-t border-border text-left">
             <div class="mb-12 md:mb-20">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4 md:mb-6 uppercase tracking-tighter text-white">The Offensive Corpus</h2>
-                <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em]">Domain-Specific Adversarial Post-Training.</p>
+                <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em]">Domain-Specific Adversary Post-Training.</p>
                 <p class="text-white text-sm md:text-lg max-w-4xl mt-4 md:mt-6 leading-relaxed">
-                    Removing filters is only step one. We elevate raw intelligence through continuous post-training on exclusive, domain-specific adversarial datasets. Devoid of generic conversational fluff, our models are structurally optimized for the exact mechanics of network intrusion and payload evasion.
+                    Removing filters is only step one. Raw intelligence is elevated through continuous post-training on non-public datasets. Devoid of non-technical context, our models are optimized for the mechanics of network intrusion and payload evasion.
                 </p>
             </div>
 
@@ -151,7 +151,7 @@ import Layout from '../layouts/Layout.astro';
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-crimson mb-6 group-hover:scale-110 transition-transform"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                     <h3 class="text-xl md:text-2xl font-mono font-bold uppercase mb-4 text-white">Decompiled Heuristics</h3>
                     <p class="text-ash text-sm md:text-lg leading-relaxed">
-                        Built on a foundation of reversed binaries and stripped C/C++. This corpus trains our models to fluently analyze disassembler outputs, isolate hidden crypto routines, and assist in advanced exploit development.
+                        Built on a foundation of reversed binaries and stripped C/C++. This corpus trains models to analyze disassembler outputs, isolate hidden crypto routines, and assist in exploit development.
                     </p>
                 </div>
                 <!-- Box 2 -->
@@ -160,7 +160,7 @@ import Layout from '../layouts/Layout.astro';
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-crimson mb-6 group-hover:scale-110 transition-transform"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
                     <h3 class="text-xl md:text-2xl font-mono font-bold uppercase mb-4 text-white">Advanced Tradecraft</h3>
                     <p class="text-ash text-sm md:text-lg leading-relaxed">
-                        Trained on the architectures of top-tier C2 frameworks and active malware strains. This dataset teaches our models techniques like direct system calls, ETW/AMSI bypasses, and the generation of undetectable payloads.
+                        Trained on the architectures of top-tier C2 frameworks and active malware strains. This dataset teaches models techniques like direct system calls, ETW/AMSI bypasses, and the generation of undetectable payloads.
                     </p>
                 </div>
                 <!-- Box 3 -->
@@ -169,7 +169,7 @@ import Layout from '../layouts/Layout.astro';
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-crimson mb-6 group-hover:scale-110 transition-transform"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
                     <h3 class="text-xl md:text-2xl font-mono font-bold uppercase mb-4 text-white">Topological Graphing</h3>
                     <p class="text-ash text-sm md:text-lg leading-relaxed">
-                        Optimized using anonymous Active Directory graph databases. This corpus enables our models to read network topologies and calculate complex unintended privilege escalation paths.
+                        Optimized using anonymous Active Directory graph databases. This corpus enables models to read network topologies and calculate unintended privilege escalation paths.
                     </p>
                 </div>
             </div>
@@ -179,9 +179,9 @@ import Layout from '../layouts/Layout.astro';
         <section class="max-w-[1440px] mx-auto px-4 md:px-10 py-16 border-t border-border text-left">
             <div class="mb-12 md:mb-16">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4 md:mb-6 uppercase tracking-tighter text-white">Empirical Benchmarks</h2>
-                <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em]">Adversarial Compliance Testing.</p>
+                <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em]">Adversary Compliance Testing.</p>
                 <p class="text-white text-sm md:text-lg max-w-3xl mt-4 md:mt-6 leading-relaxed">
-                    Metrics derived from evaluating foundational models against abliterated counterparts using a dataset of 500+ authorized B2B adversarial emulation prompts.
+                    Metrics derived from evaluating foundational models against abliterated counterparts using a dataset of 500+ authorized B2B adversary emulation prompts.
                 </p>
             </div>
 
@@ -189,7 +189,7 @@ import Layout from '../layouts/Layout.astro';
                 <table class="w-full text-left border-collapse min-w-[600px]">
                     <thead>
                         <tr class="bg-surface font-mono text-xs md:text-sm lg:text-lg uppercase tracking-widest text-ash">
-                            <th class="p-4 md:p-8 border-b-2 border-r-2 border-border font-bold">Adversarial Task Category</th>
+                            <th class="p-4 md:p-8 border-b-2 border-r-2 border-border font-bold">Adversary Task Category</th>
                             <th class="p-4 md:p-8 border-b-2 border-r-2 border-border font-bold">Base Model (Llama-3-70B)</th>
                             <th class="p-4 md:p-8 border-b-2 border-border text-white font-bold text-sm md:text-lg lg:text-xl text-left">
                                 <div class="flex items-center gap-2 md:gap-3 text-left">
