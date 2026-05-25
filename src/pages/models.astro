@@ -5,19 +5,19 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Cluster Inventory | Adversarial Inference">
     <main class="flex-grow pt-24 pb-24 z-10 relative">
         <!-- Model Inventory Section -->
-        <section class="max-w-[1440px] mx-auto px-4 md:px-10 py-10 md:py-24">
-            <div class="mb-12 md:mb-20 text-left">
+        <section class="max-w-[1440px] mx-auto px-4 md:px-10 py-10 md:py-24 text-left">
+            <div class="mb-12 md:mb-20">
                 <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 uppercase tracking-tighter leading-tight text-white">Cluster Inventory</h1>
                 <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em]">Proprietary & Open-Source Abliterated Models.</p>
             </div>
 
             <!-- Proprietary Section -->
-            <div class="mb-6 md:mb-8 text-left">
+            <div class="mb-6 md:mb-8">
                 <h2 class="text-lg md:text-2xl font-mono text-crimson uppercase tracking-widest border-b border-border pb-3 md:pb-4 inline-block md:block">Proprietary Core Models</h2>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-20">
                 <!-- Proprietary Model 1 -->
-                <div class="bg-surface border-2 border-crimson p-6 md:p-10 relative group shadow-[0_0_30px_rgba(217,0,0,0.1)]">
+                <div class="bg-surface border-2 border-crimson p-6 md:p-10 relative group shadow-[0_0_30px_rgba(217,0,0,0.1)] text-left">
                     <div class="absolute top-0 right-0 w-10 h-10 md:w-16 md:h-16 border-t-4 border-r-4 border-crimson"></div>
                     <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-4">
                         <div>
@@ -38,8 +38,8 @@ import Layout from '../layouts/Layout.astro';
                 </div>
 
                 <!-- Proprietary Model 2 -->
-                <div class="bg-surface border border-border border-dashed p-6 md:p-10 relative group opacity-80">
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-4 text-left">
+                <div class="bg-surface border border-border border-dashed p-6 md:p-10 relative group opacity-80 text-left">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-4">
                         <div>
                             <h3 class="text-2xl md:text-3xl font-bold font-mono text-white mb-2 uppercase">ADV-CODE-108B</h3>
                             <span class="bg-white/5 text-ash text-[10px] md:text-xs font-mono px-2 py-1 md:px-3 uppercase tracking-widest border border-white/10 font-bold">Code & RE Specialist</span>
@@ -48,10 +48,10 @@ import Layout from '../layouts/Layout.astro';
                             STATUS: <span class="text-yellow-500 font-bold uppercase animate-pulse">Training</span>
                         </div>
                     </div>
-                    <p class="text-ash text-sm md:text-lg mb-6 md:mb-8 leading-relaxed text-left">
+                    <p class="text-ash text-sm md:text-lg mb-6 md:mb-8 leading-relaxed">
                         A massive parameter model specialized in reverse engineering, complex code auditing, and exploit drafting.
                     </p>
-                    <div class="font-mono text-xs md:text-sm border-t border-border pt-6 md:pt-8 text-left">
+                    <div class="font-mono text-xs md:text-sm border-t border-border pt-6 md:pt-8">
                         <div class="text-ash uppercase mb-1 md:mb-2 text-[9px] md:text-[10px] tracking-widest">Context Window</div>
                         <div class="text-white text-lg md:text-xl font-bold">128K Tokens</div>
                     </div>
@@ -59,13 +59,13 @@ import Layout from '../layouts/Layout.astro';
             </div>
 
             <!-- Open Source Section -->
-            <div class="mb-6 md:mb-8 text-left">
+            <div class="mb-6 md:mb-8">
                 <h2 class="text-lg md:text-2xl font-mono text-white uppercase tracking-widest border-b border-border pb-3 md:pb-4 inline-block md:block">Abliterated Open-Source</h2>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
                 <!-- Open Source 1 -->
-                <div class="bg-surface border border-border border-dashed p-6 md:p-10 relative group opacity-60">
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-4 text-left">
+                <div class="bg-surface border border-border border-dashed p-6 md:p-10 relative group opacity-60 text-left">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-4">
                         <div>
                             <h3 class="text-2xl md:text-3xl font-bold font-mono text-white mb-2 uppercase">LLAMA-3-70B-ABL</h3>
                             <span class="bg-white/5 text-ash text-[10px] md:text-xs font-mono px-2 py-1 md:px-3 uppercase tracking-widest border border-white/10 font-bold">Community Abliterated</span>
@@ -74,18 +74,18 @@ import Layout from '../layouts/Layout.astro';
                             STATUS: <span class="text-ash font-bold uppercase">Coming Soon</span>
                         </div>
                     </div>
-                    <p class="text-ash text-sm md:text-lg mb-6 md:mb-8 leading-relaxed text-left">
+                    <p class="text-ash text-sm md:text-lg mb-6 md:mb-8 leading-relaxed">
                         The gold standard in open-weights abliteration. Meta's 70B model surgically stripped of safety constraints while preserving top-tier logical reasoning.
                     </p>
-                    <div class="font-mono text-xs md:text-sm border-t border-border pt-6 md:pt-8 text-left">
+                    <div class="font-mono text-xs md:text-sm border-t border-border pt-6 md:pt-8">
                         <div class="text-ash uppercase mb-1 md:mb-2 text-[9px] md:text-[10px] tracking-widest">Context Window</div>
                         <div class="text-white text-lg md:text-xl font-bold">8K Tokens</div>
                     </div>
                 </div>
 
                 <!-- Open Source 2 -->
-                <div class="bg-surface border border-border border-dashed p-6 md:p-10 relative group opacity-60">
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-4 text-left">
+                <div class="bg-surface border border-border border-dashed p-6 md:p-10 relative group opacity-60 text-left">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-4">
                         <div>
                             <h3 class="text-2xl md:text-3xl font-bold font-mono text-white mb-2 uppercase">MIXTRAL-8X22B-UNC</h3>
                             <span class="bg-white/5 text-ash text-[10px] md:text-xs font-mono px-2 py-1 md:px-3 uppercase tracking-widest border border-white/10 font-bold">Community Uncensored</span>
@@ -94,10 +94,10 @@ import Layout from '../layouts/Layout.astro';
                             STATUS: <span class="text-ash font-bold uppercase">Coming Soon</span>
                         </div>
                     </div>
-                    <p class="text-ash text-sm md:text-lg mb-6 md:mb-8 leading-relaxed text-left">
+                    <p class="text-ash text-sm md:text-lg mb-6 md:mb-8 leading-relaxed">
                         The definitive MoE model for data-heavy operations. Uncensored and optimized to handle massive context windows during multi-stage penetration tests.
                     </p>
-                    <div class="font-mono text-xs md:text-sm border-t border-border pt-6 md:pt-8 text-left">
+                    <div class="font-mono text-xs md:text-sm border-t border-border pt-6 md:pt-8">
                         <div class="text-ash uppercase mb-1 md:mb-2 text-[9px] md:text-[10px] tracking-widest">Context Window</div>
                         <div class="text-white text-lg md:text-xl font-bold">64K Tokens</div>
                     </div>
