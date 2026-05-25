@@ -6,7 +6,7 @@ interface Props {
 	description?: string;
 }
 
-const { title, description = "Stop fighting commercial AI guardrails. Get raw, zero-telemetry access to abliterated, no-refusal models. Built for Red Teams and Security Researchers." } = Astro.props;
+const { title, description = "Stop fighting commercial safety filters. Get zero-telemetry access to abliterated, no-refusal models. Built for Red Teams and Security Researchers." } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ const { title, description = "Stop fighting commercial AI guardrails. Get raw, z
                     <circle cx="12" cy="12" r="8" class="stroke-crimson" />
                     <line x1="8" y1="1" x2="16" y2="23" stroke="white" />
                 </svg>
-                <span class="font-mono text-xl lg:text-2xl tracking-widest font-bold uppercase block">Adversarial Inference</span>
+                <span class="font-mono text-xl lg:text-2xl tracking-widest font-bold uppercase block text-white">Adversarial Inference</span>
             </a>
             <div class="flex items-center gap-10">
                 <a href="/" class="text-base font-mono text-ash hover:text-white transition-colors uppercase tracking-widest">/Home</a>
@@ -62,12 +62,12 @@ const { title, description = "Stop fighting commercial AI guardrails. Get raw, z
                     <circle cx="12" cy="12" r="8" class="stroke-crimson" />
                     <line x1="8" y1="1" x2="16" y2="23" stroke="white" />
                 </svg>
-                <span class="font-mono text-[13px] sm:text-base tracking-widest font-bold uppercase">Adversarial Inference</span>
+                <span class="font-mono text-[13px] sm:text-base tracking-widest font-bold uppercase text-white">Adversarial Inference</span>
             </a>
 
             <!-- Right: Hamburger Menu -->
             <button id="mobile-menu-toggle" class="text-white p-2 z-10 flex-shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
         </div>
     </nav>
@@ -110,14 +110,14 @@ const { title, description = "Stop fighting commercial AI guardrails. Get raw, z
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 mb-12 md:mb-20">
                 
                 <div>
-                    <div class="flex items-center gap-3 md:gap-4 mb-6 md:mb-10">
+                    <div class="flex items-center gap-3 md:gap-4 mb-6 md:mb-10 text-left">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="miter" class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0">
                             <circle cx="12" cy="12" r="8" class="stroke-crimson" />
                             <line x1="8" y1="1" x2="16" y2="23" stroke="white" />
                         </svg>
-                        <span class="font-mono text-base md:text-xl tracking-widest font-bold uppercase">Adversarial Inference</span>
+                        <span class="font-mono text-base md:xl tracking-widest font-bold uppercase text-white">Adversarial Inference</span>
                     </div>
-                    <p class="text-ash text-sm md:text-lg lg:text-xl max-w-lg leading-relaxed font-mono italic">
+                    <p class="text-ash text-sm md:text-lg lg:text-xl max-w-lg leading-relaxed font-mono italic text-left">
                         Compute infrastructure built strictly for authorized B2B adversary emulation and security research.
                     </p>
                 </div>
@@ -130,7 +130,7 @@ const { title, description = "Stop fighting commercial AI guardrails. Get raw, z
             </div>
             
             <div class="border-t border-border pt-8 md:pt-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-xs md:text-sm lg:text-base text-ash/60 font-mono leading-relaxed">
-                <div class="max-w-xl md:max-w-2xl lg:max-w-3xl pr-4 md:pr-8">
+                <div class="max-w-xl md:max-w-2xl lg:max-w-3xl pr-4 md:pr-8 text-left">
                     <p class="mb-4 md:mb-6">
                         Cancel anytime. Due to upfront GPU compute costs, we do not offer refunds on used API credits. Service is strictly for authorized B2B adversary emulation and security research.
                     </p>
