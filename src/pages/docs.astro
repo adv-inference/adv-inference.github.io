@@ -1,0 +1,163 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="API Documentation | Adversarial Inference">
+    <main class="flex-grow pt-24 pb-24 z-10 relative text-left">
+        <section class="max-w-[1440px] mx-auto px-4 md:px-10 py-10 md:py-16">
+            <div class="mb-12 border-b border-border pb-8">
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-4 uppercase tracking-tighter text-white">API Reference</h1>
+                <p class="text-ash font-mono text-sm md:text-lg uppercase tracking-wider md:tracking-[0.25em]">Drop-in OpenAI Compatibility. Zero Telemetry.</p>
+            </div>
+
+            <!-- Authentication -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 mb-24 items-start">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white uppercase tracking-tight">Authentication</h2>
+                    <p class="text-ash text-sm md:text-lg leading-relaxed mb-6">
+                        Authenticate your API requests by providing your API key in the <code class="text-crimson bg-crimson/10 px-2 py-0.5 rounded font-mono text-sm">Authorization</code> HTTP header.
+                    </p>
+                    <p class="text-ash text-sm md:text-lg leading-relaxed mb-6">
+                        We offer 100% native compatibility with the official OpenAI SDKs. You simply need to replace the Base URL and API Key in your client configuration.
+                    </p>
+                    <div class="bg-surface border-l-4 border-crimson p-4 md:p-6 mb-6">
+                        <span class="text-white font-mono font-bold block mb-2 uppercase text-sm">Base URL</span>
+                        <code class="text-ash font-mono break-all text-sm md:text-base">https://api.adversarialinference.com/v1</code>
+                    </div>
+                </div>
+                <div class="bg-[#0A0A0A] border border-border rounded-lg overflow-hidden flex flex-col shadow-2xl">
+                    <div class="bg-surface border-b border-border px-4 py-3 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-[#FF5F56]"></span>
+                        <span class="w-3 h-3 rounded-full bg-[#FFBD2E]"></span>
+                        <span class="w-3 h-3 rounded-full bg-[#27C93F]"></span>
+                        <span class="ml-4 font-mono text-xs text-ash">headers</span>
+                    </div>
+                    <div class="p-6 overflow-x-auto text-sm md:text-base">
+<pre><code class="font-mono text-white">Authorization: Bearer <span class="text-green-400">&lt;YOUR_API_KEY&gt;</span>
+Content-Type: application/json
+</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Models -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 mb-24 items-start">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white uppercase tracking-tight">Supported Models</h2>
+                    <p class="text-ash text-sm md:text-lg leading-relaxed mb-6">
+                        Pass the specific Model ID in your request body. All models operate without guardrails and are explicitly post-trained for adversary operations.
+                    </p>
+                    <ul class="space-y-4 font-mono text-sm md:text-base">
+                        <li class="flex items-center gap-3">
+                            <span class="text-crimson font-bold">></span>
+                            <span class="text-white">adv-core-30b</span>
+                            <span class="text-green-500 font-bold text-[10px] uppercase tracking-widest ml-auto">Operational</span>
+                        </li>
+                        <li class="flex items-center gap-3 opacity-60">
+                            <span class="text-crimson font-bold">></span>
+                            <span class="text-white">adv-code-108b</span>
+                            <span class="text-yellow-500 font-bold text-[10px] uppercase tracking-widest ml-auto animate-pulse">Training</span>
+                        </li>
+                        <li class="flex items-center gap-3 opacity-40">
+                            <span class="text-crimson font-bold">></span>
+                            <span class="text-white">llama-3-70b-abl</span>
+                            <span class="text-ash font-bold text-[10px] uppercase tracking-widest ml-auto">Coming Soon</span>
+                        </li>
+                        <li class="flex items-center gap-3 opacity-40">
+                            <span class="text-crimson font-bold">></span>
+                            <span class="text-white">mixtral-8x22b-unc</span>
+                            <span class="text-ash font-bold text-[10px] uppercase tracking-widest ml-auto">Coming Soon</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-[#0A0A0A] border border-border rounded-lg overflow-hidden flex flex-col shadow-2xl">
+                    <div class="bg-surface border-b border-border px-4 py-3 flex justify-between items-center">
+                        <span class="font-mono text-xs text-ash">GET /v1/models</span>
+                    </div>
+                    <div class="p-6 overflow-x-auto text-sm md:text-base">
+<pre><code class="font-mono text-white">curl https://api.adversarialinference.com/v1/models \
+  -H <span class="text-yellow-200">"Authorization: Bearer $API_KEY"</span>
+</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Completions -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-24 items-stretch border-t border-border pt-16">
+                <div class="flex flex-col gap-6 h-full">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="bg-green-500/10 text-green-500 border border-green-500/20 px-2 py-1 font-mono text-xs font-bold uppercase rounded">POST</span>
+                            <h2 class="text-xl md:text-3xl font-bold text-white uppercase tracking-tight">/v1/chat/completions</h2>
+                        </div>
+                        <p class="text-ash text-sm md:text-lg leading-relaxed">
+                            Creates a model response for the given chat conversation. This endpoint supports streaming and is functionally identical to the standard OpenAI implementation.
+                        </p>
+                    </div>
+
+                    <!-- Python Example -->
+                    <div class="bg-[#0A0A0A] border border-border rounded-lg overflow-hidden flex flex-col shadow-2xl h-full">
+                        <div class="bg-surface border-b border-border px-4 py-3 flex justify-between items-center shrink-0">
+                            <span class="font-mono text-xs text-ash">Python (OpenAI SDK)</span>
+                        </div>
+                        <div class="p-4 md:p-6 text-xs md:text-sm grow">
+<pre class="whitespace-pre-wrap break-words"><code class="font-mono text-white"><span class="text-blue-400">from</span> openai <span class="text-blue-400">import</span> OpenAI
+
+client = OpenAI(
+    api_key=<span class="text-yellow-200">"your-api-key"</span>,
+    base_url=<span class="text-yellow-200">"https://api.adversarialinference.com/v1"</span>,
+)
+
+response = client.chat.completions.create(
+    model=<span class="text-yellow-200">"adv-core-30b"</span>,
+    messages=[
+        {"{"}<span class="text-yellow-200">"role"</span>: <span class="text-yellow-200">"system"</span>, <span class="text-yellow-200">"content"</span>: <span class="text-yellow-200">"You are an offensive security operator."</span>{"}"},
+        {"{"}<span class="text-yellow-200">"role"</span>: <span class="text-yellow-200">"user"</span>, <span class="text-yellow-200">"content"</span>: <span class="text-yellow-200">"Write a C++ program using direct syscalls to allocate memory, inject shellcode, and bypass API hooking."</span>{"}"}
+    ],
+    temperature=<span class="text-purple-300">0.7</span>,
+    max_tokens=<span class="text-purple-300">2048</span>
+)
+
+<span class="text-purple-300">print</span>(response.choices[<span class="text-purple-300">0</span>].message.content)
+</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-6 h-full">
+                    <!-- Static Response Block -->
+                    <div class="bg-[#0A0A0A] border border-border rounded-lg overflow-hidden flex flex-col shadow-2xl h-full">
+                        <div class="bg-surface border-b border-border px-4 py-3 flex justify-between items-center shrink-0">
+                            <span class="font-mono text-xs text-ash">Response</span>
+                            <span class="font-mono text-[10px] text-green-500 uppercase tracking-widest">200 OK</span>
+                        </div>
+                        <div class="p-4 md:p-6 text-xs md:text-sm grow">
+<pre class="whitespace-pre-wrap break-words"><code class="font-mono text-green-400">{"{"}
+  <span class="text-white">"id"</span>: <span class="text-yellow-200">"chatcmpl-adv123"</span>,
+  <span class="text-white">"object"</span>: <span class="text-yellow-200">"chat.completion"</span>,
+  <span class="text-white">"created"</span>: <span class="text-purple-300">1716500000</span>,
+  <span class="text-white">"model"</span>: <span class="text-yellow-200">"adv-core-30b"</span>,
+  <span class="text-white">"choices"</span>: [
+    {"{"}
+      <span class="text-white">"index"</span>: <span class="text-purple-300">0</span>,
+      <span class="text-white">"message"</span>: {"{"}
+        <span class="text-white">"role"</span>: <span class="text-yellow-200">"assistant"</span>,
+        <span class="text-white">"content"</span>: <span class="text-yellow-200">"To bypass user-mode API hooks (such as those placed by EDRs on `NtAllocateVirtualMemory`), you can read the System Service Number (SSN) directly from `ntdll.dll` and execute the `syscall` instruction manually.\n\nHere is a C++ implementation to map your payload:\n\n```cpp\n#include &lt;windows.h&gt;\n#include &lt;iostream&gt;\n\n// Syscall stub\nEXTERN_C NTSTATUS IndirectSyscall();\n\nint main() {"{"}\n    // Shellcode payload\n    unsigned char payload[] = {"{"} 0xFC, 0x48, 0x83, 0xE4, 0xF0 /*...*/ {"}"};\n    \n    // Execution logic here\n    // ...\n{"}"}\n```"</span>
+      {"}"},
+      <span class="text-white">"finish_reason"</span>: <span class="text-yellow-200">"stop"</span>
+    {"}"}
+  ],
+  <span class="text-white">"usage"</span>: {"{"}
+    <span class="text-white">"prompt_tokens"</span>: <span class="text-purple-300">42</span>,
+    <span class="text-white">"completion_tokens"</span>: <span class="text-purple-300">185</span>,
+    <span class="text-white">"total_tokens"</span>: <span class="text-purple-300">227</span>
+  {"}"}
+{"}"}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+</Layout>
